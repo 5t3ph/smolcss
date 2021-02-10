@@ -4,8 +4,9 @@
   "description": "Smol CSS layouts and components",
   "main": "index.html",
   "scripts": {
-    "start": "eleventy --serve",
-    "build": "eleventy"
+    "color-tokens": "a11y-color-tokens --outputDirPath='src/css' ",
+    "start": "npm run color-tokens && eleventy --serve",
+    "build": "npm run color-tokens && eleventy"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,11 @@
   "homepage": "https://github.com/5t3ph/smolcss#readme",
   "devDependencies": {
     "@11ty/eleventy": "^0.11.1"
+  },
+  "dependencies": {
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.6",
+    "a11y-color-tokens": "^0.1.0",
+    "a11ycolor": "^2.0.9",
+    "color": "^3.1.3"
   }
 }

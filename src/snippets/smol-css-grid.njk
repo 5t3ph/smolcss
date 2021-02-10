@@ -1,0 +1,26 @@
+---
+title: "Smol Responsive CSS Grid"
+description: "Learn more - https://moderncss.dev/3-css-grid-techniques-to-make-you-a-grid-convert/"
+categories: ["grid", "layout"]
+templateEngineOverride: njk, md
+---
+
+{% set css %}
+.smol-css-grid {
+  --min: 10ch;
+
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(var(--min), 1fr));
+}
+{% endset %}
+
+{% set html %}
+<ul class="smol-css-grid">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+{% endset %}
+
+{% include "code.njk" %}

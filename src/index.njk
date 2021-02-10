@@ -1,0 +1,12 @@
+---
+title: "SmolCSS"
+layout: "base.njk"
+---
+
+{% for snippet in collections.snippet %}
+<article>
+  <h2>{{ snippet.data.title }}</h2>
+  <p>{{ snippet.data.description }}</p>
+  {{ snippet.templateContent | safe }}
+</article>
+{% endfor %}

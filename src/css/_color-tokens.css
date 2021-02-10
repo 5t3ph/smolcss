@@ -1,0 +1,22 @@
+/* 🛑 STOP!
+  Do not change this file directly.
+  Modify colors in color-tokens.js
+ */
+
+
+
+:root {
+  --color-surface: #f9f9f9;
+  --color-on-surface: #494848;
+  --color-code-surface: #29344B;
+  --color-red: #FCD4D2;
+  --color-on-red: #885452;
+  --color-yellow: #F2E6B1;
+  --color-on-yellow: #71673C;
+  --color-blue: #CADFF9;
+  --color-on-blue: #4B6381;
+  --color-green: #ADEBB1;
+  --color-on-green: #3D6B40;
+  --color-purple: #E0D4F6;
+  --color-on-purple: #675883;
+}
