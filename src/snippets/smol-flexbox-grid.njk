@@ -1,8 +1,7 @@
 ---
 title: "Smol Responsive Flexbox Grid"
 categories: ["flexbox", "layout"]
-moderncss: "https://moderncss.dev/solutions-to-replace-the-12-column-grid/"
-resourceIntro: "Learn more about this responsive flexbox grid solution"
+order: 2
 templateEngineOverride: njk, md
 ---
 
@@ -32,6 +31,12 @@ Create an intrinsically responsive grid layout, optionally using a CSS custom pr
   <li>Item 2</li>
   <li>Item 3</li>
 </ul>
+{% endset %}
+
+{% set resourceLink %}
+
+Learn more about [creating a responsive flexbox grid solution](https://moderncss.dev/solutions-to-replace-the-12-column-grid/) on ModernCSS.dev
+
 {% endset %}
 
 {% include "code.njk" %}
