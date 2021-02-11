@@ -1,8 +1,7 @@
 ---
 title: "Smol Centering of Anything"
 categories: ["grid", "layout"]
-moderncss: "https://moderncss.dev/complete-guide-to-centering-in-css/"
-resourceIntro: "Just in case you're not convinced, see more centering solutions"
+order: 3
 templateEngineOverride: njk, md
 ---
 
@@ -23,6 +22,12 @@ templateEngineOverride: njk, md
 <ul class="smol-centering">
   <li>Feeling Centered</li>
 </ul>
+{% endset %}
+
+{% set resourceLink %}
+
+Just in case you're not convinced, [see more centering solutions](https://moderncss.dev/complete-guide-to-centering-in-css/) on ModernCSS.dev
+
 {% endset %}
 
 {% include "code.njk" %}
