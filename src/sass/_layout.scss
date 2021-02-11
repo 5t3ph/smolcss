@@ -39,6 +39,10 @@ body > footer {
   color: var(--color-on-purple);
   text-align: center;
   padding: 1rem;
+
+  :last-child {
+    margin-top: 0.5rem;
+  }
 }
 
 aside {
