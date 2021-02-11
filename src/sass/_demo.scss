@@ -26,22 +26,22 @@
     margin: 0;
     padding: 0;
 
-    li {
-      display: grid;
-      place-content: center;
-      padding: 1rem;
-      background-color: var(--color-purple);
-      color: var(--color-on-purple);
-      font-size: clamp(1.25rem, 4vw, 2rem);
-      font-weight: bold;
-      text-align: center;
-      border-radius: 0.15em;
-      border: 1px dashed;
-    }
-
     @media (max-width: 768px) {
       --min: 6ch;
     }
+  }
+
+  [class*="smol"] > * {
+    display: grid;
+    place-content: center;
+    padding: 1rem;
+    background-color: var(--color-purple);
+    color: var(--color-on-purple);
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    font-weight: bold;
+    text-align: center;
+    border-radius: 0.15em;
+    border: 1px dashed;
   }
 }
 
