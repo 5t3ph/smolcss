@@ -17,6 +17,10 @@
   <meta name="og:description" content="{{ description }}">
   <meta property="og:image" content="https://smolcss.dev/smolcss.png" />
   <meta name="twitter:image" content="https://smolcss.dev/smolcss.png" />
+  {% if 'smolcss' in meta.url %}
+    <script async defer data-domain="smolcss.dev" src="https://plausible.io/js/plausible.outbound-links.js"></script>
+    <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+    {% endif %}
 </head>
 <body>
   <header>
