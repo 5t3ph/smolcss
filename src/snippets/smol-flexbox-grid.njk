@@ -1,0 +1,37 @@
+---
+title: "Smol Responsive Flexbox Grid"
+categories: ["flexbox", "layout"]
+moderncss: "https://moderncss.dev/solutions-to-replace-the-12-column-grid/"
+resourceIntro: "Learn more about this responsive flexbox grid solution"
+templateEngineOverride: njk, md
+---
+
+{% set description %}
+
+Create an intrinsically responsive grid layout, optionally using a CSS custom property to extend to varable contexts. Each column will resize at the same rate _until_ reaching the `--min` width. At that point, the last item will break to a new row and fill any available space.
+
+{% endset %}
+
+{% set css %}
+.smol-flexbox-grid {
+  --min: 10ch;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.smol-flexbox-grid > * {
+  flex: 1 1 var(--min);
+}
+{% endset %}
+
+{% set html %}
+<ul class="smol-flexbox-grid">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+{% endset %}
+
+{% include "code.njk" %}

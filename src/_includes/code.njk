@@ -1,3 +1,5 @@
+{{ description }}
+
 <style>
 {{ css }}
 </style>
@@ -6,10 +8,14 @@
   <summary>CSS for "{{ title }}"</summary>
 
 ```css
-{{ css | safe }}
+{{- css | safe }}
 ```
 </details>
 
 <div class="demo">
 {{ html | safe }}
 </div>
+
+<footer>
+{{ resourceIntro }} on <a href="{{ moderncss }}">ModernCSS.dev</a>
+</footer>

@@ -1,13 +1,20 @@
 ---
 title: "Smol Responsive CSS Grid"
-description: "Learn more - https://moderncss.dev/3-css-grid-techniques-to-make-you-a-grid-convert/"
 categories: ["grid", "layout"]
+moderncss: "https://moderncss.dev/solutions-to-replace-the-12-column-grid/"
+resourceIntro: "Learn more about this responsive CSS grid solution"
 templateEngineOverride: njk, md
 ---
 
+{% set description %}
+
+Create an intrinsically responsive grid layout, optionally using a CSS custom property to extend to varable contexts. Each column will resize at the same rate, and break to a new row if the width reaches the `--min` value.
+
+{% endset %}
+
 {% set css %}
 .smol-css-grid {
-  --min: 10ch;
+  --min: 15ch;
 
   display: grid;
   grid-gap: 1rem;

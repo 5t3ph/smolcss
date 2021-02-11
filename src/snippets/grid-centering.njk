@@ -1,0 +1,28 @@
+---
+title: "Smol Centering of Anything"
+categories: ["grid", "layout"]
+moderncss: "https://moderncss.dev/complete-guide-to-centering-in-css/"
+resourceIntro: "Just in case you're not convinced, see more centering solutions"
+templateEngineOverride: njk, md
+---
+
+{% set description %}
+
+**Put down the CSS centering jokes**! This just may be the _last_ centering solution you'll ever need! Except, perhaps it's cousin that uses `place-items` vs. `place-content`, which is occasionally more appropriate.
+
+{% endset %}
+
+{% set css %}
+.smol-centering {
+  display: grid;
+  place-content: center;
+}
+{% endset %}
+
+{% set html %}
+<ul class="smol-centering">
+  <li>Feeling Centered</li>
+</ul>
+{% endset %}
+
+{% include "code.njk" %}

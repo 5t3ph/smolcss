@@ -1,0 +1,92 @@
+body {
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+}
+
+header,
+main,
+aside {
+  padding: 1rem;
+}
+
+header {
+  color: var(--color-on-purple);
+  background-color: var(--color-purple);
+  min-height: 30vh;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  border-bottom: 2px dashed;
+
+  small {
+    margin-top: 0.5rem;
+  }
+}
+
+main {
+  display: grid;
+  grid-gap: 15vh;
+}
+
+main,
+aside {
+  max-width: 100ch;
+  margin: 8vh auto;
+}
+
+body > footer {
+  background-color: var(--color-purple);
+  color: var(--color-on-purple);
+  text-align: center;
+  padding: 1rem;
+}
+
+aside {
+  border-top: 1px dashed;
+  color: var(--color-on-purple);
+}
+
+article footer {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+details {
+  margin-top: 2rem;
+}
+
+summary {
+  cursor: pointer;
+  padding: 0.5em;
+  background-color: var(--color-code-surface);
+  color: var(--color-surface);
+}
+
+$category-colors: (
+  "layout": "red",
+  "component": "yellow",
+  "grid": "blue",
+  "flexbox": "green",
+);
+
+@each $category, $color in $category-colors {
+  .category-#{$category} {
+    background-color: var(--color-#{$color});
+    color: var(--color-on-#{$color});
+  }
+}
+
+.categories {
+  margin: 0.25rem 0 1rem;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+
+  li {
+    padding: 0.15em 0.35em;
+    border: 1px dotted;
+    font-size: 0.85rem;
+    border-radius: 0.25em;
+  }
+}

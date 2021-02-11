@@ -3,18 +3,18 @@
   Modify colors in color-tokens.js
  */
 
-$color-surface: #f9f9f9 !default;
+$color-surface: #f0e9f3 !default;
 $color-on-surface: #494848 !default;
-$color-code-surface: #29344B !default;
-$color-red: #FCD4D2 !default;
+$color-code-surface: #29344b !default;
+$color-red: #fcd4d2 !default;
 $color-on-red: #885452 !default;
-$color-yellow: #F2E6B1 !default;
-$color-on-yellow: #71673C !default;
-$color-blue: #CADFF9 !default;
-$color-on-blue: #4B6381 !default;
-$color-green: #ADEBB1 !default;
-$color-on-green: #3D6B40 !default;
-$color-purple: #E0D4F6 !default;
+$color-yellow: #f2e6b1 !default;
+$color-on-yellow: #71673c !default;
+$color-blue: #cadff9 !default;
+$color-on-blue: #4b6381 !default;
+$color-green: #c6e7d6 !default;
+$color-on-green: #4c695a !default;
+$color-purple: #e0d4f6 !default;
 $color-on-purple: #675883 !default;
 
 $color-tokens: (
@@ -30,10 +30,10 @@ $color-tokens: (
   "color-green": $color-green,
   "color-on-green": $color-on-green,
   "color-purple": $color-purple,
-  "color-on-purple": $color-on-purple
+  "color-on-purple": $color-on-purple,
 ) !default;
 
-@mixin color-tokens() {
+:root {
   --color-surface: #{$color-surface};
   --color-on-surface: #{$color-on-surface};
   --color-code-surface: #{$color-code-surface};

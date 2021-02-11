@@ -1,26 +1,18 @@
-:root {
-  --color-surface: #f9f9f9;
-  --color-on-surface: #494848;
-  --color-code-surface: #29344B;
-  --color-red: #FCD4D2;
-  --color-on-red: #885452;
-  --color-yellow: #F2E6B1;
-  --color-on-yellow: #71673C;
-  --color-blue: #CADFF9;
-  --color-on-blue: #4B6381;
-  --color-green: #ADEBB1;
-  --color-on-green: #3D6B40;
-  --color-purple: #E0D4F6;
-  --color-on-purple: #675883;
-}
-
-body {
-  font-family: sans-serif;
-}
+$code-colors: (
+  "color-red",
+  "color-yellow",
+  "color-blue",
+  "color-green",
+  "color-purple"
+);
 
 code[class*="language-"],
 pre[class*="language-"] {
-  color: #fff;
+  @each $color in $code-colors {
+    --#{$color}: #{scale-color(color($color), $lightness: -18%)};
+  }
+
+  color: var(--color-surface);
   background: none;
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   text-align: left;
@@ -36,9 +28,8 @@ pre[class*="language-"] {
 /* Code blocks */
 pre[class*="language-"] {
   padding: 1em;
-  margin: 2rem 0;
+  margin: 0;
   overflow: auto;
-  border-radius: 0.3em;
   max-width: calc(100vw - 2rem);
 }
 

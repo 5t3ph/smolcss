@@ -1,0 +1,24 @@
+body {
+  font-family: "Recursive", sans-serif;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+}
+
+code:not([class]) {
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 1.75ex;
+  color: var(--color-on-purple);
+  background-color: var(--color-purple);
+  padding-right: 0.15em;
+  padding-left: 0.15em;
+}

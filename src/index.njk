@@ -1,12 +1,19 @@
 ---
 title: "SmolCSS"
+description: "Minimal snippets for modern CSS layouts and components"
 layout: "base.njk"
 ---
 
 {% for snippet in collections.snippet %}
 <article>
   <h2>{{ snippet.data.title }}</h2>
-  <p>{{ snippet.data.description }}</p>
+  <ul class="categories">
+    {% for category in snippet.data.categories %}
+    <li class="category-{{ category }}">
+      {{ category }}
+    </li>
+    {% endfor %}
+  </ul>
   {{ snippet.templateContent | safe }}
 </article>
 {% endfor %}

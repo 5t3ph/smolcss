@@ -32,13 +32,13 @@
   - `color-code-surface`
   - `color-on-red`
   - `color-on-blue`
-  - `color-on-green`
   - `color-on-purple`
 
 ## color-on-red
   - `color-surface`
   - `color-red`
   - `color-yellow`
+  - `color-green`
 
 ## color-yellow
   - `color-on-surface`
@@ -57,7 +57,6 @@
   - `color-on-surface`
   - `color-code-surface`
   - `color-on-blue`
-  - `color-on-green`
   - `color-on-purple`
 
 ## color-on-blue
@@ -65,18 +64,19 @@
   - `color-red`
   - `color-yellow`
   - `color-blue`
+  - `color-green`
 
 ## color-green
   - `color-on-surface`
   - `color-code-surface`
+  - `color-on-red`
+  - `color-on-blue`
   - `color-on-green`
   - `color-on-purple`
 
 ## color-on-green
   - `color-surface`
-  - `color-red`
   - `color-yellow`
-  - `color-blue`
   - `color-green`
 
 ## color-purple
