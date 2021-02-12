@@ -5,7 +5,7 @@ layout: "base.njk"
 ---
 
 {% for snippet in collections.snippets %}
-<article>
+<article id="{{ snippet.fileSlug }}">
   <h2>{{ snippet.data.title }}</h2>
   <ul class="categories">
     {% for category in snippet.data.categories %}

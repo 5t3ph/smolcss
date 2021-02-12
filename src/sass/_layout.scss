@@ -3,6 +3,23 @@ body {
   color: var(--color-on-surface);
 }
 
+[id] {
+  scroll-margin-top: 3em;
+
+  &:target {
+    position: relative;
+
+    &::before {
+      content: "Aww, you came to see me!";
+      position: absolute;
+      top: -1.5rem;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--color-on-blue);
+    }
+  }
+}
+
 header,
 main,
 aside {

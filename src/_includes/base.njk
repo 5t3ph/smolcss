@@ -18,9 +18,15 @@
   <meta property="og:image" content="https://smolcss.dev/smolcss.png" />
   <meta name="twitter:image" content="https://smolcss.dev/smolcss.png" />
   {% if 'smolcss' in meta.url %}
-    <script async defer data-domain="smolcss.dev" src="https://plausible.io/js/plausible.outbound-links.js"></script>
-    <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
-    {% endif %}
+  <script async defer data-domain="smolcss.dev" src="https://plausible.io/js/plausible.outbound-links.js"></script>
+  <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+  {% endif %}
+  <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="RSS Feed for {{ meta.siteName }}"
+      href="/feed/"
+    />
 </head>
 <body>
   <header>
@@ -35,7 +41,7 @@
     <p> <strong>More snippets coming soon!</strong> While you're waiting, check out my in-depth CSS tutorials on <a href="https://moderncss.dev">ModernCSS.dev</a> or <a href="https://5t3ph.dev/egghead">watch my front-end lessons on egghead</a>.</p>
   </aside>
   <footer>
-  <p>&copy; {% year %} <a href="https://twitter.com/5t3ph">Stephanie Eckles</a> of <a href="https://moderncss.dev">ModernCSS.dev</a></p>
+  <p>&copy; {% year %} <a href="https://twitter.com/5t3ph">Stephanie Eckles</a> of <a href="https://moderncss.dev">ModernCSS.dev</a> • <a href="/feed/">Subscribe to RSS</a> • <a href="https://www.buymeacoffee.com/moderncss">Buy Me a Coffee</a></p>
   <p><small>Note: Sometimes changing the `display` property <a href="https://adrianroselli.com/2020/10/a11yto-conf-css-display-properties-versus-html-semantics.html">can harm accessibility</a></small></p>
   </footer>
 </body>
