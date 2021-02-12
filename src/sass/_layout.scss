@@ -50,9 +50,15 @@ aside {
   color: var(--color-on-purple);
 }
 
-article footer {
-  margin-top: 1rem;
-  font-size: 0.9rem;
+article {
+  > p + p {
+    margin-top: 1rem;
+  }
+
+  footer {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
 }
 
 details {

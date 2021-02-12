@@ -1,0 +1,36 @@
+---
+title: "Smol Responsive Padding"
+categories: ["layout"]
+order: 5
+templateEngineOverride: njk, md
+---
+
+{% set description %}
+
+This smol demo is using `clamp()` for responsive padding. The order of `clamp()` the values can be interpreted as: the minimum allowed value is `1rem`, the ideal value is `5%` (which will be relative to the element), and the max allowed value is `3rem`. 
+
+In other words, as the element is placed in different contexts and resized across viewports, that value will grow and shrink. But it will always compute to a value within the range of `1rem` to `3rem`.
+
+Another suggested option for the middle ideal value is to use a viewport unit, like `4vw`, which works great for components such as models or setting padding on the `body`.
+
+{% endset %}
+
+{% set css %}
+.smol-responsive-padding {
+  padding: 1.5rem clamp(1rem, 5%, 3rem);
+}
+{% endset %}
+
+{% set html %}
+<div data-container-style class="smol-responsive-padding">
+  <p data-text data-unstyled>Gummi bears gummies cheesecake donut liquorice sweet roll lollipop chocolate cake macaroon. Dragée powder biscuit. Dessert topping jelly beans liquorice cake sesame snaps oat cake chocolate bar marshmallow. Cookie danish jelly-o pudding tart chocolate. Jelly sweet tiramisu fruitcake dessert muffin chocolate cake dragée. Donut dragée carrot cake icing. Macaroon lemon drops muffin.</p>
+</div>
+{% endset %}
+
+{% set resourceLink %}
+
+Alternatively, explore using `clamp()` to [generate fluid typography](https://moderncss.dev/generating-font-size-css-rules-and-creating-a-fluid-type-scale/) on ModernCSS.dev
+
+{% endset %}
+
+{% include "code.njk" %}
