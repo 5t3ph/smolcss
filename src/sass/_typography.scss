@@ -12,6 +12,10 @@ h2 {
 
 a {
   color: inherit;
+
+  &:focus {
+    outline: 2px solid currentColor;
+  }
 }
 
 code:not([class]) {
