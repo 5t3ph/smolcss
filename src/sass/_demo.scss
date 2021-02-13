@@ -2,6 +2,10 @@
   padding: 1.5rem;
   border: 1px solid var(--color-on-purple);
 
+  @media (max-width: 928px) {
+    max-width: calc(100vw - 2rem);
+  }
+
   ul {
     list-style: none;
     margin: 0;
@@ -18,14 +22,14 @@
     padding: 1rem;
     background-color: var(--color-purple);
     color: var(--color-on-purple);
-    font-size: clamp(1.15rem, 4vw, 2rem);
+    font-size: clamp(1.5rem, 4vw, 2rem);
     font-weight: bold;
     text-align: center;
     border-radius: 0.15em;
     border: 1px dashed;
 
     &[data-text] {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       text-align: left;
     }
   }
@@ -35,10 +39,9 @@
   }
 }
 
-// False positive in iOS :(
-// Fenced based on computed layout widths, nothing scientific about devices
-// @supports (resize: horizontal) {
-@media (min-width: 928px) {
+// Seeking a pointer because @supports for `resize`
+// returns false positive on iOS
+@media (any-hover: hover) and (any-pointer: fine) {
   .demo {
     position: relative;
     resize: horizontal;

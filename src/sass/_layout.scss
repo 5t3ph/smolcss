@@ -42,7 +42,7 @@ header {
 
 main {
   display: grid;
-  grid-gap: 15vh;
+  grid-gap: max(15vh, 4rem);
 }
 
 main,
