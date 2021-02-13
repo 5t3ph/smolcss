@@ -1,0 +1,17 @@
+/* recursive-regular - latin */
+@font-face {
+  font-family: "Recursive";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local(""),
+    url("../fonts/recursive-v23-latin-regular.woff2") format("woff2");
+}
+/* recursive-600 - latin */
+@font-face {
+  font-family: "Recursive";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local(""), url("../fonts/recursive-v23-latin-600.woff2") format("woff2");
+}
