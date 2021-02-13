@@ -3,9 +3,8 @@
   Modify colors in color-tokens.js
  */
 
-$color-surface: #f0e9f3 !default;
-$color-on-surface: #494848 !default;
-$color-code-surface: #29344B !default;
+$color-surface: #f5f2f7 !default;
+$color-on-surface: #29344B !default;
 $color-red: #FCD4D2 !default;
 $color-on-red: #885452 !default;
 $color-yellow: #F2E6B1 !default;
@@ -20,7 +19,6 @@ $color-on-purple: #675883 !default;
 $color-tokens: (
   "color-surface": $color-surface,
   "color-on-surface": $color-on-surface,
-  "color-code-surface": $color-code-surface,
   "color-red": $color-red,
   "color-on-red": $color-on-red,
   "color-yellow": $color-yellow,
@@ -36,7 +34,6 @@ $color-tokens: (
 :root {
   --color-surface: #{$color-surface};
   --color-on-surface: #{$color-on-surface};
-  --color-code-surface: #{$color-code-surface};
   --color-red: #{$color-red};
   --color-on-red: #{$color-on-red};
   --color-yellow: #{$color-yellow};

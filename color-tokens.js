@@ -1,13 +1,8 @@
 module.exports = [
   {
     name: "surface",
-    color: "#f0e9f3",
-    onColor: "#494848",
-  },
-  {
-    name: "code-surface",
-    color: "#29344B",
-    onColor: false,
+    color: "#f5f2f7",
+    onColor: "#29344B",
   },
   {
     name: "red",

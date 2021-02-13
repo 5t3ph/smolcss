@@ -1,25 +1,6 @@
 .demo {
-  position: relative;
-  resize: horizontal;
-  overflow: auto;
-  width: 100%;
-  max-width: calc(100ch - 2rem);
   padding: 1.5rem;
   border: 1px solid var(--color-on-purple);
-
-  @media (max-width: 928px) {
-    max-width: calc(100vw - 2rem);
-  }
-
-  &::after {
-    content: "Resize me!";
-    position: absolute;
-    right: 0.75rem;
-    bottom: 0.5rem;
-    font-size: 0.8rem;
-    line-height: 0;
-    color: var(--color-on-purple);
-  }
 
   ul {
     list-style: none;
@@ -51,6 +32,29 @@
 
   [data-container-style] {
     outline: 2px dotted var(--color-on-surface);
+  }
+}
+
+// False positive in iOS :(
+// Fenced based on computed layout widths, nothing scientific about devices
+// @supports (resize: horizontal) {
+@media (min-width: 928px) {
+  .demo {
+    position: relative;
+    resize: horizontal;
+    overflow: auto;
+    width: 100%;
+    max-width: calc(100ch - 2rem);
+
+    &::after {
+      content: "Resize me!";
+      position: absolute;
+      right: 0.75rem;
+      bottom: 0.5rem;
+      font-size: 0.8rem;
+      line-height: 0;
+      color: var(--color-on-purple);
+    }
   }
 }
 
