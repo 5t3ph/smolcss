@@ -9,7 +9,7 @@
     "watch:eleventy": "eleventy --serve",
     "build:sass": "sass  --no-source-map src/sass:public/css",
     "build:eleventy": "eleventy",
-    "postbuild": "postcss public/css/*.css -u autoprefixer cssnano -r",
+    "postbuild": "postcss public/css/*.css -u autoprefixer cssnano -r --no-map",
     "start": "npm-run-all color-tokens build:sass --parallel watch:*",
     "build": "npm-run-all color-tokens build:sass build:eleventy"
   },

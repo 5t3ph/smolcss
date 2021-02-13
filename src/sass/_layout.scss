@@ -57,7 +57,7 @@ body > footer {
   text-align: center;
   padding: 1rem;
 
-  :last-child {
+  > :last-child {
     margin-top: 0.5rem;
   }
 }
@@ -122,5 +122,21 @@ $category-colors: (
     border: 1px dotted;
     font-size: 0.85rem;
     border-radius: 0.25em;
+  }
+}
+
+.link-github {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  justify-self: center;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+
+  svg {
+    width: 1.25em;
+    fill: currentColor;
+    margin-right: 0.25em;
+    transform: translateY(-5%);
   }
 }
