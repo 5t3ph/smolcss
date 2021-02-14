@@ -1,15 +1,10 @@
-$code-colors: (
-  "color-red",
-  "color-yellow",
-  "color-blue",
-  "color-green",
-  "color-purple"
-);
-
 code[class*="language-"],
 pre[class*="language-"] {
   @each $color in $code-colors {
-    --#{$color}: #{scale-color(color($color), $lightness: -18%)};
+    --color-#{$color}: #{scale-color(
+        color("color-#{$color}"),
+        $lightness: -18%
+      )};
   }
 
   color: var(--color-surface);

@@ -1,0 +1,93 @@
+$base-color-tokens: ("surface", "red", "yellow", "blue", "green", "purple");
+
+@mixin dark-mode() {
+  @each $color in $base-color-tokens {
+    $onColor: if(
+      $color == "surface",
+      scale-color(color("color-#{$color}"), $lightness: -10%),
+      color("color-#{$color}")
+    );
+
+    --color-#{$color}: #{color("color-on-#{$color}")};
+    --color-on-#{$color}: #{$onColor};
+  }
+
+  code[class*="language-"],
+  pre[class*="language-"] {
+    --color-on-surface: var(--color-surface);
+    --color-surface: var(--color-on-surface);
+  }
+
+  pre[class*="language-"] {
+    border: 1px solid;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-user-color-scheme="light"]) {
+    @include dark-mode();
+  }
+}
+
+:root[data-user-color-scheme="dark"] {
+  @include dark-mode();
+}
+
+.mode-toggle {
+  display: inline-grid;
+  grid-gap: 0.5em;
+  align-items: center;
+  grid-template-areas: "input label";
+  grid-template-columns: 2.5rem auto;
+  justify-self: center;
+  margin-top: 3rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+
+  input {
+    opacity: 0;
+  }
+
+  &-control,
+  input {
+    width: 2rem;
+    height: 0.8rem;
+    grid-area: input;
+    font-size: 1rem;
+  }
+
+  &-control {
+    border-radius: 1em;
+    background-color: var(--color-on-purple);
+    display: inline-grid;
+    align-items: center;
+    opacity: 0.8;
+
+    &::before {
+      --switch-color: var(--color-surface);
+      --switch-x: 0%;
+
+      content: "";
+      width: 1em;
+      height: 1em;
+      border-radius: 50%;
+      background-color: var(--switch-color);
+      transform: translateY(-8%) translateX(var(--switch-x));
+      transition: all 120ms ease-in-out;
+      border: 2px solid var(--color-on-purple);
+    }
+  }
+
+  input:checked + &-control::before {
+    --switch-color: var(--color-purple);
+    --switch-x: 100%;
+  }
+
+  input:focus + &-control::before {
+    box-shadow: 0 0 0 3px var(--color-on-surface);
+  }
+  input:checked:focus + &-control::before {
+    box-shadow: 0 0 0 3px var(--color-surface);
+  }
+}

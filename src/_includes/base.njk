@@ -32,6 +32,11 @@
     <h1>{{ title }}</h1>
     <p>{{ description }}</p>
     <small>Created by <a href="https://twitter.com/5t3ph">Stephanie Eckles</a> of <a href="https://moderncss.dev">ModernCSS.dev</a></small>
+    <label for="mode-toggle" class="mode-toggle">
+        <input id="mode-toggle" type="checkbox" />
+        <span class="mode-toggle-control"></span>
+        Dark Mode
+      </label>
   </header>
   <main>
     {{ content | safe }}
@@ -46,5 +51,12 @@
     </svg> Star on Github</a>
   <p><small>Note: Sometimes changing the `display` property <a href="https://adrianroselli.com/2020/10/a11yto-conf-css-display-properties-versus-html-semantics.html">can harm accessibility</a></small></p>
   </footer>
+
+  {% set js %}
+  {% include "dark-mode.js" %}
+  {% endset %}
+  <script>
+    {{ js | jsmin | safe }}
+  </script>
 </body>
 </html>
