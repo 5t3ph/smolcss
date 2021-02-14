@@ -15,9 +15,10 @@ Create an intrinsically responsive grid layout, optionally using a CSS custom pr
 {% set css %}
 .smol-css-grid {
   --min: 15ch;
+  --gap: 1rem;
 
   display: grid;
-  grid-gap: 1rem;
+  grid-gap: var(--gap);
   grid-template-columns: repeat(auto-fit, minmax(var(--min), 1fr));
 }
 {% endset %}

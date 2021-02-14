@@ -15,10 +15,11 @@ Create an intrinsically responsive grid layout, optionally using a CSS custom pr
 {% set css %}
 .smol-flexbox-grid {
   --min: 10ch;
+  --gap: 1rem;
 
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: var(--gap);
 }
 
 .smol-flexbox-grid > * {

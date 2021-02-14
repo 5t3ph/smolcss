@@ -1,0 +1,87 @@
+---
+title: "Smol Aspect Ratio Gallery"
+categories: ["flexbox", "layout", "component"]
+order: 6
+date: 2021-02-14
+templateEngineOverride: md, njk
+---
+
+{% set description %}
+
+The `aspect-ratio` property is nearing support in all major modern browsers, and by combining it with `object-fit` and flexbox, we can create a smol responsive gallery. If you're using Chrome or Edge, check out the CSS via your your browser Inspector to modify the CSS custom properties on `.smol-aspect-ratio-gallery` and see how they affect this layout.
+
+For now, we're using `@supports` checks to fallback to setting a height for list items if `aspect-ratio` is not yet supported to achieve a similar effect cross-browser.
+
+Note that `aspect-ratio` isn't just for images, but any element!
+
+_This solution also uses the [Smol Responsive Flexbox Grid](#smol-flexbox-grid)_.
+
+{% endset %}
+
+{% set css %}
+.smol-aspect-ratio-gallery {
+  --min: 15rem;
+  --aspect-ratio: 4/3;
+  --gap: 0;
+}
+
+.smol-aspect-ratio-gallery li {
+  aspect-ratio: var(--aspect-ratio);
+}
+
+@supports not (aspect-ratio: 1/1) {
+  .smol-aspect-ratio-gallery li {
+    height: max(30vh, 15rem);
+  }
+}
+
+.smol-aspect-ratio-gallery img {
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+{% endset %}
+
+{% set html %}
+<ul data-component class="smol-aspect-ratio-gallery smol-flexbox-grid">
+  <li>
+    <img
+      src="https://images.unsplash.com/photo-1596401463492-1ca39cdf7575?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+      alt=""
+    />
+  </li>
+  <li>
+    <img
+      src="https://images.unsplash.com/photo-1591756985756-6e231184528b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80"
+      alt=""
+    />
+  </li>
+  <li>
+    <img
+      src="https://images.unsplash.com/photo-1556195947-316050222289?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+      alt=""
+    />
+  </li>
+  <li>
+    <img
+      src="https://images.unsplash.com/photo-1597264121870-2f1b4d43d2f6?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+      alt=""
+    />
+  </li>
+  <li>
+    <img
+      src="https://images.unsplash.com/photo-1465566829994-b8da8cae5909?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+      alt=""
+    />
+  </li>
+</ul>
+{% endset %}
+
+{% set resourceLink %}
+
+For an alternate method to `aspect-ratio` on this solution, check out my [flexbox gallery egghead lesson](https://egghead.io/lessons/flexbox-create-an-automatically-responsive-flexbox-gallery?af=2s65ms). You may also enjoy my [egghead lesson on `object-fit`](https://egghead.io/lessons/css-apply-aspect-ratio-sizing-to-images-with-css-object-fit?af=2s65ms).
+
+{% endset %}
+
+{% include "code.njk" %}

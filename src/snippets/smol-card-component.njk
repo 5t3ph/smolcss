@@ -1,0 +1,113 @@
+---
+title: "Smol Composable Card Component"
+categories: ["grid", "flexbox", "component"]
+order: 6
+date: 2021-02-14
+templateEngineOverride: njk, md
+---
+
+{% set description %}
+
+This component features `aspect-ratio` and leans heavily on the pseudo selectors of `:not()`, `:is()`, `:first-child`, and `:last-child`. The result is a composable card component that _just works_ with your desired semantic internal content.
+
+**Note**: Both `aspect-ratio` and `:is()` are in progress rolling out to the latest versions of modern browsers, so you may need to create fallbacks for your unique audience and consider this solution as a progressive enhancement. Fallback considerations are included as noted with comments.
+
+_This solution also uses the [Smol Responsive CSS Grid](#smol-css-grid) to contain the cards_.
+
+{% endset %}
+
+{% set css %}
+.smol-card-component {
+  --img-ratio: 3/2;
+
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.35);
+  border-radius: 0.5rem;
+}
+
+/* Soon we can replace this with: gap: 1rem; */
+.smol-card-component > * + * {
+  margin-top: 1rem;
+}
+
+.smol-card-component img {
+  aspect-ratio: var(--img-ratio);
+  object-fit: cover;
+  width: 100%;
+}
+
+@supports not (aspect-ratio: 1/1) {
+  .smol-card-component img {
+    height: max(20vh, 12rem);
+  }
+}
+
+.smol-card-component img:first-child {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.smol-card-component img:last-child {
+  border-radius: 0 0 0.5rem 0.5rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.smol-card-component > *:not(img) {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.smol-card-component :not(img):first-child {
+  margin-top: 1rem;
+}
+
+.smol-card-component > :last-child:not(img) {
+  padding-bottom: 1rem;
+}
+
+/* Include webkit rule for best current support */
+.smol-card-component :not(:-webkit-any(h2,h3,h4)) {
+  font-size: 0.9rem;
+}
+
+/* Preferred `:is()` selector for most modern browsers */
+.smol-card-component :not(:is(h2,h3,h4)) {
+  font-size: 0.9rem;
+}
+
+.smol-card-component > a {
+  align-self: start;
+}
+{% endset %}
+
+{% set html %}
+<ul data-component class="smol-css-grid" style="--min: 22ch; --gap: 2rem;">
+  <li data-component class="smol-card-component">
+    <img src='https://images.unsplash.com/photo-1607274227313-08146c819e6f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHw&ixlib=rb-1.2.1&q=80&w=400' alt=''>
+    <h3>Headline</h3>
+    <p>Chocolate cake macaroon tootsie roll pastry gummies.</p>
+    <p>Apple pie jujubes cheesecake ice cream gummies sweet roll lollipop.</p>
+    <a href="https://moderncss.dev">Visit ModernCSS.dev</a>
+  </li>
+  <li data-component class="smol-card-component">
+    <h3>Headline</h3>
+    <img src='https://images.unsplash.com/photo-1607274227313-08146c819e6f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHw&ixlib=rb-1.2.1&q=80&w=400' alt=''>
+    <p>Chocolate cake macaroon tootsie roll pastry gummies.</p>
+  </li>
+  <li data-component class="smol-card-component">
+    <h3>Headline</h3>
+    <p>Apple pie jujubes cheesecake ice cream gummies sweet roll lollipop.</p>
+    <p>Chocolate cake macaroon tootsie roll pastry gummies.</p>
+    <img src='https://images.unsplash.com/photo-1607274227313-08146c819e6f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MXwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHw&ixlib=rb-1.2.1&q=80&w=400' alt=''>
+  </li>
+</ul>
+{% endset %}
+
+{% set resourceLink %}
+
+Learn more about CSS selectors in my two part guide, where part one covers [selectors and combinators](https://moderncss.dev/guide-to-advanced-css-selectors-part-one/) and part two covers [pseudo classes and pseudo elements](https://moderncss.dev/guide-to-advanced-css-selectors-part-two/).
+
+{% endset %}
+
+{% include "code.njk" %}

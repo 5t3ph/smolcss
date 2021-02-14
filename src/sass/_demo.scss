@@ -12,11 +12,13 @@
     padding: 0;
 
     @media (max-width: 768px) {
-      --min: 6ch;
+      &:not([data-component]) {
+        --min: 6ch;
+      }
     }
   }
 
-  [class*="smol"] > *:not([data-unstyled]) {
+  [class*="smol"]:not([data-component]) > *:not([data-unstyled]) {
     display: grid;
     place-content: center;
     padding: 1rem;
@@ -37,6 +39,13 @@
   [data-container-style] {
     outline: 2px dotted var(--color-on-surface);
   }
+
+  [data-component][class*="component"] {
+    --component-surface: #{color("color-surface")};
+    --on-component-surface: #{color("color-on-surface")};
+    background-color: var(--component-surface);
+    color: var(--on-component-surface);
+  }
 }
 
 // Seeking a pointer because @supports for `resize`
@@ -52,8 +61,8 @@
     &::after {
       content: "Resize me!";
       position: absolute;
-      right: 0.75rem;
-      bottom: 0.5rem;
+      right: 0.85rem;
+      bottom: 0.65rem;
       font-size: 0.8rem;
       line-height: 0;
       color: var(--color-on-purple);
@@ -61,7 +70,39 @@
   }
 }
 
+@media not all and (min-resolution: 0.001dpcm) {
+  .demo {
+    resize: none;
+
+    &::after {
+      content: "";
+    }
+  }
+
+  small[hidden] {
+    display: block;
+    margin: 1rem 0;
+  }
+}
+
 /* Markdown conversion error preventing inline working */
 .smol-flexbox-grid > * {
   flex: 1 1 var(--min);
+}
+
+.smol-card-component > *:not(img) {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.smol-card-component > :last-child:not(img) {
+  padding-bottom: 1rem;
+}
+
+.smol-card-component > a {
+  align-self: start;
+}
+
+.smol-card-component > * + * {
+  margin-top: 1rem;
 }
