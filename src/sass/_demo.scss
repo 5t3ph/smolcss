@@ -79,25 +79,3 @@
     }
   }
 }
-
-/* Markdown conversion error preventing inline working */
-.smol-flexbox-grid > * {
-  flex: 1 1 var(--min);
-}
-
-.smol-card-component > *:not(img) {
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
-.smol-card-component > :last-child:not(img) {
-  padding-bottom: 1rem;
-}
-
-.smol-card-component > a {
-  align-self: start;
-}
-
-.smol-card-component > * + * {
-  margin-top: 1rem;
-}

@@ -34,3 +34,18 @@ code:not([class]) {
   padding-right: 0.15em;
   padding-left: 0.15em;
 }
+
+blockquote {
+  display: inline-block;
+  font-size: 1.05rem;
+  margin: 1rem 0 0;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0.25em 0.25em 0;
+  background-color: var(--color-blue);
+  color: var(--color-on-blue);
+  border-left: 2px dashed;
+
+  > * {
+    font-size: inherit;
+  }
+}

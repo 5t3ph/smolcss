@@ -14,7 +14,7 @@ For now, we're using `@supports` checks to fallback to setting a height for list
 
 Note that `aspect-ratio` isn't just for images, but any element!
 
-_This solution also uses the [Smol Responsive Flexbox Grid](#smol-flexbox-grid)_.
+> This solution also uses the [Smol Responsive Flexbox Grid](#smol-flexbox-grid).
 
 {% endset %}
 
@@ -31,7 +31,7 @@ _This solution also uses the [Smol Responsive Flexbox Grid](#smol-flexbox-grid)_
 
 @supports not (aspect-ratio: 1/1) {
   .smol-aspect-ratio-gallery li {
-    height: max(30vh, 15rem);
+    height: max(25vh, 15rem);
   }
 }
 

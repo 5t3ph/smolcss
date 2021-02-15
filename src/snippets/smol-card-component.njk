@@ -12,7 +12,7 @@ This component features `aspect-ratio` and leans heavily on the pseudo selectors
 
 **Note**: Both `aspect-ratio` and `:is()` are in progress rolling out to the latest versions of modern browsers, so you may need to create fallbacks for your unique audience and consider this solution as a progressive enhancement. Fallback considerations are included as noted with comments.
 
-_This solution also uses the [Smol Responsive CSS Grid](#smol-css-grid) to contain the cards_.
+> This solution also uses the [Smol Responsive CSS Grid](#smol-css-grid) to contain the cards.
 
 {% endset %}
 
@@ -31,26 +31,25 @@ _This solution also uses the [Smol Responsive CSS Grid](#smol-css-grid) to conta
   margin-top: 1rem;
 }
 
-.smol-card-component img {
+.smol-card-component > img {
   aspect-ratio: var(--img-ratio);
   object-fit: cover;
   width: 100%;
 }
 
 @supports not (aspect-ratio: 1/1) {
-  .smol-card-component img {
-    height: max(20vh, 12rem);
+  .smol-card-component > img {
+    height: max(18vh, 12rem);
   }
 }
 
-.smol-card-component img:first-child {
+.smol-card-component > img:first-child {
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
-.smol-card-component img:last-child {
+.smol-card-component > img:last-child {
   border-radius: 0 0 0.5rem 0.5rem;
   margin-top: auto;
-  padding-top: 1rem;
 }
 
 .smol-card-component > *:not(img) {
@@ -58,21 +57,21 @@ _This solution also uses the [Smol Responsive CSS Grid](#smol-css-grid) to conta
   margin-right: 1rem;
 }
 
-.smol-card-component :not(img):first-child {
+.smol-card-component > :not(img):first-child {
   margin-top: 1rem;
 }
 
-.smol-card-component > :last-child:not(img) {
-  padding-bottom: 1rem;
+.smol-card-component > :last-of-type:not(img):not(:is(h2, h3, h4)) {
+  margin-bottom: 1rem;
 }
 
 /* Include webkit rule for best current support */
-.smol-card-component :not(:-webkit-any(h2,h3,h4)) {
+.smol-card-component > :not(:-webkit-any(h2,h3,h4)) {
   font-size: 0.9rem;
 }
 
 /* Preferred `:is()` selector for most modern browsers */
-.smol-card-component :not(:is(h2,h3,h4)) {
+.smol-card-component > :not(:is(h2,h3,h4)) {
   font-size: 0.9rem;
 }
 
