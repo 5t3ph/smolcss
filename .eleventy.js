@@ -6,6 +6,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget("./src/sass/");
   eleventyConfig.addPassthroughCopy("./src/*.png");
   eleventyConfig.addPassthroughCopy("./src/fonts/");
+  eleventyConfig.addPassthroughCopy("./src/assets/");
 
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(pluginRss);

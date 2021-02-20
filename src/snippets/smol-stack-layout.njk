@@ -1,0 +1,62 @@
+---
+title: "Smol Stack Layout"
+categories: ["grid", "layout"]
+order: 7
+date: 2021-02-19
+templateEngineOverride: njk, md
+---
+
+{% set description %}
+
+This smol stacked layout is a grid feature that can often replace older techniques that relied on absolute positioning. It works by defining a single `grid-template-area` and then assigning all direct children to that `grid-area`. The children are then "stacked" and can take advantage of grid positioning, such as the centering technique in the demo.
+
+At first glance you might not notice, but that's a video background in the demo. And all we had to do was set `width: 100%` to ensure it filled the grid area. Then, we make use of `place-self` on the `h3` to center it. The rest is completely optional design styling!
+
+Bonus features in this demo include defining the `h3` size using `clamp()` for _viewport relative sizing_, and also using `aspect-ratio` to size the container to help reduce [cumulative layout shift](https://web.dev/cls/).
+
+{% endset %}
+
+{% set css %}
+.smol-stack-layout {
+  display: grid;
+  grid-template-areas: "stack";
+  aspect-ratio: 16/9;
+  background-color: #200070;
+}
+
+.smol-stack-layout > * {
+  grid-area: stack;
+}
+
+.smol-stack-layout video {
+  width: 100%;
+}
+
+.smol-stack-layout h3 {
+  place-self: center;
+  position: relative;
+  color: #fff;
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  text-align: center;
+  line-height: 1;
+  font-style: italic;
+  padding: 5vh 2vw;
+}
+{% endset %}
+
+{% set html %}
+<div data-component class="smol-stack-layout">
+  <video>
+    <source src="/assets/video.mp4" type="video/mp4">
+  </video>
+  <h3>Into The Unknown</h3>
+</div>
+{% endset %}
+
+{% set resourceLink %}
+
+For more examples of creating smol stack layouts, review my guide to [website hero designs](https://moderncss.dev/3-popular-website-heroes-created-with-css-grid-layout/), see how it's used for [creating custom checkboxes](https://moderncss.dev/pure-css-custom-checkbox-style/), and learn to use it to [position animated image captions](https://moderncss.dev/animated-image-gallery-captions-with-bonus-ken-burns-effect/).
+
+{% endset %}
+
+{% include "code.njk" %}
