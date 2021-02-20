@@ -34,13 +34,25 @@ Bonus features in this demo include defining the `h3` size using `clamp()` for _
 
 .smol-stack-layout h3 {
   place-self: center;
-  position: relative;
-  color: #fff;
   font-size: clamp(2.5rem, 5vw, 5rem);
   text-align: center;
   line-height: 1;
   font-style: italic;
   padding: 5vh 2vw;
+}
+
+.smol-stack-layout small {
+  align-self: end;
+  justify-self: start;
+  padding: 0 0 0.25em 0.5em;
+  opacity: 0.8;
+  font-size: 0.8rem;
+}
+
+.smol-stack-layout h3,
+.smol-stack-layout small {
+  position: relative;
+  color: #fff;
 }
 {% endset %}
 
@@ -50,6 +62,7 @@ Bonus features in this demo include defining the `h3` size using `clamp()` for _
     <source src="/assets/video.mp4" type="video/mp4">
   </video>
   <h3>Into The Unknown</h3>
+  <small>Video from <a href="https://www.pexels.com/video/a-sky-full-of-stars-at-night-2646392/">Pexels</a></small>
 </div>
 {% endset %}
 
