@@ -9,7 +9,10 @@
   ul {
     list-style: none;
     margin: 0;
-    padding: 0;
+
+    &:not([data-padding-unset]) {
+      padding: 0;
+    }
 
     @media (max-width: 768px) {
       &:not([data-component]) {
@@ -46,12 +49,18 @@
     background-color: var(--component-surface);
     color: var(--on-component-surface);
   }
+
+  &[data-layout="centered"] {
+    display: grid;
+    place-content: center;
+    min-height: 10rem;
+  }
 }
 
 // Seeking a pointer because @supports for `resize`
 // returns false positive on iOS
 @media (any-hover: hover) and (any-pointer: fine) {
-  .demo {
+  .demo:not(.no-resize) {
     position: relative;
     resize: horizontal;
     overflow: auto;

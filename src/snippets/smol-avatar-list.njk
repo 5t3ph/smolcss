@@ -1,0 +1,106 @@
+---
+title: "Smol Avatar List Component"
+categories: ["grid", "layout", "component"]
+order: 8
+date: 2021-02-20
+templateEngineOverride: njk, md
+---
+
+{% set resize %}false{% endset %}
+{% set layout %}centered{% endset %}
+
+{% set description %}
+
+This smol component, which you may also know as a [facepile](https://indieweb.org/facepile), is possible due to the ability of CSS grid to easily create overlapping content. Paired with CSS custom properties and `calc()` we can make this a contextually resizeable component.
+
+Based on devices capabilities, the grid columns are adjusted to slightly narrower than the `--avatar-size`. Since nothing inherit to CSS grid stops the content overflowing, it forces an overlap based on DOM order of the list items. To ensure perfect circle images, we first use the `--avatar-size` value to explicitly set the list item dimensions. Then by setting both width and height to `100%` on the `img` in addition to `object-fit: cover` and `border-radius: 50%`, we can be assured that regardless of actual image dimensions the contents will be forced into a circle appearance.
+
+**Bonus trick #1** is the use of layered `box-shadow` values that only set a _spread_ to create the appearance of borders without adding to the computed dimensions of the image. The spread values are set with `em` so that they are relative to the avatar size. And that works because we set the list's `font-size` to `--avatar-size`.
+
+**Bonus trick #2** is using the _general sibling combinator_ (`~`) so that on hover or `:focus-within` of an `li`, all linked images that follow animate over to reveal more of the hovered avatar.
+
+🔎 Pop open your browser devtools and experiment with changing the `--avatar-size` value!
+
+{% endset %}
+
+{% set css %}
+.smol-avatar-list {
+  --avatar-size: 3rem;
+  --avatar-count: 3;
+
+  display: grid;
+  /* Default to displaying most of the avatar to
+  enable easier access on touch devices, ensuring
+  the WCAG touch target size is met or exceeded */
+  grid-template-columns: repeat(
+    var(--avatar-count),
+    max(44px, calc(var(--avatar-size) / 1.15))
+  );
+  /* `padding` matches added visual dimensions of
+  the `box-shadow` to help create a more accurate
+  computed component size */
+  padding: 0.08em;
+  font-size: var(--avatar-size);
+}
+
+@media (any-hover: hover) and (any-pointer: fine) {
+  .smol-avatar-list {
+    /* We create 1 extra cell to enable the computed 
+    width to match the final visual width */
+    grid-template-columns: repeat(
+      calc(var(--avatar-count) + 1),
+      calc(var(--avatar-size) / 1.75)
+    );
+  }
+}
+
+.smol-avatar-list li {
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+}
+
+.smol-avatar-list li:hover ~ li a,
+.smol-avatar-list li:focus-within ~ li a {
+  transform: translateX(33%);
+}
+
+.smol-avatar-list img,
+.smol-avatar-list a {
+  display: block;
+  border-radius: 50%;
+}
+
+.smol-avatar-list a {
+  transition: transform 180ms ease-in-out;
+}
+
+.smol-avatar-list img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: #fff;
+  box-shadow: 0 0 0 0.05em #fff, 0 0 0 0.08em rgba(0, 0, 0, 0.15);
+}
+
+.smol-avatar-list a:focus {
+  outline: 2px solid transparent;
+  /* Double-layer trick to work for dark and light backgrounds */
+  box-shadow: 0 0 0 0.08em #29344B, 0 0 0 0.12em white;
+}
+{% endset %}
+
+{% set html %}
+<ul data-component data-padding-unset class="smol-avatar-list">
+  <li><a href="#smol-avatar-list"><img src='https://avataaars.io/?avatarStyle=Transparent&topType=LongHairBun&accessoriesType=Blank&hairColor=Auburn&facialHairType=BeardMedium&facialHairColor=Auburn&clotheType=ShirtCrewNeck&clotheColor=Blue01&eyeType=Side&eyebrowType=RaisedExcitedNatural&mouthType=Serious&skinColor=Tanned' /></a></li>
+  <li><a href="#smol-avatar-list"><img src='https://avataaars.io/?avatarStyle=Transparent&topType=LongHairDreads&accessoriesType=Blank&hairColor=Brown&facialHairType=Blank&clotheType=ShirtScoopNeck&clotheColor=PastelGreen&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Smile&skinColor=Tanned' /></a></li>
+  <li><a href="#smol-avatar-list"><img src='https://avataaars.io/?avatarStyle=Transparent&topType=LongHairCurly&hairColor=BrownDark&facialHairType=Blank&clotheType=GraphicShirt&clotheColor=Pink&graphicType=Diamond&eyeType=Side&eyebrowType=Default&mouthType=Default&skinColor=Brown'/></a></li>
+</ul>
+{% endset %}
+
+{% set resourceLink %}
+
+ICYMI earlier - check out my quick [video lesson on object-fit](https://egghead.io/lessons/css-apply-aspect-ratio-sizing-to-images-with-css-object-fit?af=2s65ms) to learn more about how it works. _Source images from [avataaars](https://getavataaars.com/)_.
+
+{% endset %}
+
+{% include "code.njk" %}

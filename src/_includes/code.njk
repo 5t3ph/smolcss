@@ -12,7 +12,7 @@
 ```
 </details>
 
-<div class="demo">
+<div data-layout="{{ layout }}" class="demo {% if resize == 'false' %}no-resize{% endif %}">
 {{ html | safe }}
 </div>
 
