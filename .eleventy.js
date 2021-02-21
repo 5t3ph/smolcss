@@ -43,7 +43,8 @@ module.exports = function (eleventyConfig) {
       const baseCSS = `\n${css}\n\n${displayStyles}`;
       let cssCode = `${reset}\n\n${snippetComment}`;
 
-      tags.push("smolcss");
+      let penTags = [...tags];
+      penTags[tags.length] = "smolcss";
 
       if (layout == "flex") {
         cssCode += `${flex}${baseCSS}`;
@@ -56,7 +57,7 @@ module.exports = function (eleventyConfig) {
       const penAttributes = {
         title: `SmolCSS - ${title}`,
         description: description,
-        tags: tags,
+        tags: penTags,
         editors: "110",
         layout: "left",
         html: `<!-- SmolCSS - ${title}\n${description} -->${html}`,
