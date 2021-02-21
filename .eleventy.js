@@ -38,9 +38,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addShortcode(
     "postToCodepen",
     (title, slug, tags, css, html, layout) => {
+      const description = `Generated from: https://SmolCSS.dev/#${slug}`;
       const snippetComment = `/***\n 🟣 SmolCSS Snippet Styles\n */`;
       const baseCSS = `\n${css}\n\n${displayStyles}`;
       let cssCode = `${reset}\n\n${snippetComment}`;
+
+      tags.push("smolcss");
 
       if (layout == "flex") {
         cssCode += `${flex}${baseCSS}`;
@@ -52,11 +55,11 @@ module.exports = function (eleventyConfig) {
 
       const penAttributes = {
         title: `SmolCSS - ${title}`,
-        description: `Generated from ${title} on SmolCSS.dev/#${slug}`,
+        description: description,
         tags: tags,
         editors: "110",
         layout: "left",
-        html: html,
+        html: `<!-- SmolCSS - ${title}\n${description} -->${html}`,
         html_pre_processor: "none",
         css: cssCode,
         css_pre_processor: "scss",
