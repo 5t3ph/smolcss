@@ -17,7 +17,7 @@ Based on devices capabilities, the grid columns are adjusted to slightly narrowe
 
 **Bonus trick #1** is the use of layered `box-shadow` values that only set a _spread_ to create the appearance of borders without adding to the computed dimensions of the image. The spread values are set with `em` so that they are relative to the avatar size. And that works because we set the list's `font-size` to `--avatar-size`.
 
-**Bonus trick #2** is using the _general sibling combinator_ (`~`) so that on hover or `:focus-within` of an `li`, all linked images that follow animate over to reveal more of the hovered avatar.
+**Bonus trick #2** is using the _general sibling combinator_ (`~`) so that on hover or `:focus-within` of an `li`, all linked images that follow animate over to reveal more of the hovered avatar. If the number of avatars will cause wrapping, you may want to choose a different effect such as changing the layering via `z-index`.
 
 🔎 Pop open your browser devtools and experiment with changing the `--avatar-size` value!
 
