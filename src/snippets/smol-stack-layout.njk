@@ -59,7 +59,7 @@ Bonus features in this demo include defining the `h3` size using `clamp()` for _
 {% set html %}
 <div data-component class="smol-stack-layout">
   <video muted autoplay>
-    <source src="/assets/video.mp4" type="video/mp4">
+    <source src="{{ meta.url }}/assets/video.mp4" type="video/mp4">
   </video>
   <h3>Into The Unknown</h3>
   <small>Video from <a href="https://www.pexels.com/video/a-sky-full-of-stars-at-night-2646392/">Pexels</a></small>
@@ -70,6 +70,10 @@ Bonus features in this demo include defining the `h3` size using `clamp()` for _
 
 For more examples of creating smol stack layouts, review my guide to [website hero designs](https://moderncss.dev/3-popular-website-heroes-created-with-css-grid-layout/), see how it's used for [creating custom checkboxes](https://moderncss.dev/pure-css-custom-checkbox-style/), and learn to use it to [position animated image captions](https://moderncss.dev/animated-image-gallery-captions-with-bonus-ken-burns-effect/).
 
+{% endset %}
+
+{% set codepenForm %}
+{% postToCodepen title, page.fileSlug, tags, css, html %}
 {% endset %}
 
 {% include "code.njk" %}

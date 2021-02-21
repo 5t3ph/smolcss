@@ -110,17 +110,55 @@ $category-colors: (
   }
 }
 
+.actions {
+  --item-padding: 0.15em 0.35em;
+
+  display: grid;
+  grid-gap: 1rem;
+  justify-content: start;
+  align-items: center;
+  margin: 0.5rem 0 1.5rem;
+  font-size: 0.85rem;
+
+  @media (min-width: 30rem) {
+    grid-auto-flow: column;
+  }
+
+  button {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--item-padding);
+    border: 1px solid var(--color-on-blue);
+    font: inherit;
+    background-color: var(--color-on-blue);
+    color: var(--color-blue);
+    border-radius: 0.25em;
+    line-height: inherit;
+    cursor: pointer;
+
+    svg {
+      fill: currentColor;
+      width: 1.25em;
+      margin-right: 0.5em;
+    }
+
+    &:focus {
+      outline: 2px solid transparent;
+      box-shadow: 0 0 0 2px var(--color-blue), 0 0 0 4px var(--color-on-blue);
+    }
+  }
+}
+
 .categories {
-  margin: 0.25rem 0 1rem;
+  margin: 0;
   padding: 0;
   list-style: none;
   display: flex;
   gap: 1rem;
 
   li {
-    padding: 0.15em 0.35em;
+    padding: var(--item-padding);
     border: 1px dotted;
-    font-size: 0.85rem;
     border-radius: 0.25em;
   }
 }
