@@ -65,6 +65,12 @@
   if(demoLink) {
     plausible('Demo Link', { props: { Link: demoLink } });
   }
+
+  document.querySelectorAll('button[type="submit"]').forEach(button => {
+    button.addEventListener('click', (el) => {
+      plausible('CodePen', { props: { Demo: el.target.dataset.name } });
+    });
+  });
   {% endif %}
 
   if ('IntersectionObserver' in window) {
@@ -87,7 +93,6 @@
     );
 
     document.querySelectorAll('article .demo').forEach(demo => { demoObserver.observe(demo) });
-
   }
   </script>
 </body>
