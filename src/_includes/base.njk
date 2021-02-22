@@ -72,28 +72,6 @@
     });
   });
   {% endif %}
-
-  if ('IntersectionObserver' in window) {
-    const demoObserver = new IntersectionObserver(
-      (entries) => {
-        const demo = entries[0];
-        if (!demo.isIntersecting) return;
-        demoObserver.unobserve(demo.target);
-
-        const demoID = demo.target.parentElement.id;
-
-        {%- if 'smolcss' in meta.url %}
-        plausible('Viewed Demos', { props: { Demo: demoID } });
-        {% endif %}
-      },
-      {
-        rootMargin: '-20% 0px -30% 0px',
-        threshold: 0.1
-      },
-    );
-
-    document.querySelectorAll('article .demo').forEach(demo => { demoObserver.observe(demo) });
-  }
   </script>
 </body>
 </html>
