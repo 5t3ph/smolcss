@@ -60,9 +60,11 @@
     {{ js | jsmin | safe }}
   </script>
   <script>
-  const demoLink = location.hash;
   {%- if 'smolcss' in meta.url %}
-  plausible('Demo Link', { props: { Link: demoLink } });
+  const demoLink = location.hash;
+  if(demoLink) {
+    plausible('Demo Link', { props: { Link: demoLink } });
+  }
   {% endif %}
 
   if ('IntersectionObserver' in window) {
@@ -73,7 +75,6 @@
         demoObserver.unobserve(demo.target);
 
         const demoID = demo.target.parentElement.id;
-        console.log(demoID);
 
         {%- if 'smolcss' in meta.url %}
         plausible('Viewed Demos', { props: { Demo: demoID } });
