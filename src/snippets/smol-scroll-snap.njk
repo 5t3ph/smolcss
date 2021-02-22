@@ -1,0 +1,74 @@
+---
+title: "Smol Scroll Snap"
+categories: ["grid", "layout"]
+order: 10
+date: 2021-02-21
+templateEngineOverride: njk, md
+---
+
+{% set resize %}false{% endset %}
+
+{% set description %}
+
+Modern CSS has gifted us a series of properties that enable setting up more controlled scrolling experiences. In this demo, you'll find that as you begin to scroll, the middle items "snap" to the center of the scrollable area. Additionally, you are unable to scroll past more than one item at a time.
+
+To align the scroll items, we're using grid and updating the orientation of child items using `grid-auto-flow: column`. Then the width of the grid children is set using `min()` which selects the _minimum computed value_ between the options provided. The selected width options in this demo results in a large section of neighboring items being visible in the scrollable area for large viewports, while on smaller viewports the scrollable area is mostly consumed by the current scroll item.
+
+_While this is a very cool feature set, use with care!_ Be sure to test your implementation to ensure its not inaccessible. Test across a variety of devices, and with desktop zoom particularly at levels of 200% and 400%. Try it out with a screen reader and make sure you can navigate to all content.
+
+**Note**: Have caution when attempting to mix fullscreen scroll snap slideshows followed by normal flow content. This can damage the overall scrolling experience and even prevent access to content. Fullscreen scroll areas are also prone to issues for users of high desktop zoom due to high risk of overlapping content as the aspect ratio changes. In addition, fullscreen versions that use `y mandatory` result in "scroll hijacking" which can be frustrating to users.
+
+{% endset %}
+
+{% set css %}
+.smol-scroll-snap {
+  /* Set up container positioning */
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 1.5rem;
+  /* Enable overflow along our scroll axis */
+  overflow-x: auto;
+  /* Define axis and scroll type, where
+  `mandatory` means any scroll attempt will
+  cause a scroll to the next item */
+  scroll-snap-type: x mandatory;
+  padding: 0 0 1.5rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.smol-scroll-snap > * {
+  width: min(45ch, 60vw);
+  /* Choose how to align children on scroll */
+  scroll-snap-align: center;
+  /* Prevents scrolling past more than one child */
+  scroll-snap-stop: always;
+}
+{% endset %}
+
+{% set html %}
+<ul data-padding-unset class="smol-scroll-snap">
+  <li data-text>
+    <p>Topping candy canes ice cream gummi bears gingerbread marshmallow. Chocolate cake powder sugar plum topping.</p>
+  </li>
+  <li data-text>
+    <p>Cake marshmallow carrot cake. Pie liquorice liquorice sweet tootsie roll caramels donut dragée bear claw. Chocolate powder candy canes.</p>
+  </li>
+  <li data-text>
+    <p>Pie chocolate cake dessert pastry candy canes donut pie soufflé pie. Fruitcake caramels tart pudding macaroon chocolate jelly beans brownie.</p>
+  </li>
+  <li data-text>
+    <p>Icing dessert chocolate cupcake dragée sesame snaps. Icing pastry donut cupcake marshmallow sweet macaroon gummies.</p>
+  </li>
+  <li data-text>
+    <p>Jelly wafer biscuit. Dessert halvah cheesecake. Liquorice jelly sweet roll marzipan biscuit</p>
+  </li>
+</ul>
+{% endset %}
+
+{% set resourceLink %}{% endset %}
+
+{% set codepenForm %}
+{% postToCodepen title, page.fileSlug, categories, css, html %}
+{% endset %}
+
+{% include "code.njk" %}

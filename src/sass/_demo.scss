@@ -23,7 +23,6 @@
 
   [class*="smol"]:not([data-component]) > *:not([data-unstyled]) {
     display: grid;
-    place-content: center;
     padding: 1rem;
     background-color: var(--color-purple);
     color: var(--color-on-purple);
@@ -32,6 +31,10 @@
     text-align: center;
     border-radius: 0.15em;
     border: 1px dashed;
+
+    &:not([data-text]) {
+      place-content: center;
+    }
 
     &[data-text] {
       font-size: 1.15rem;
@@ -64,8 +67,6 @@
     position: relative;
     resize: horizontal;
     overflow: auto;
-    width: 100%;
-    max-width: calc(100ch - 2rem);
 
     &::after {
       content: "Resize me!";

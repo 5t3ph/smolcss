@@ -40,7 +40,6 @@ ul {
 
 [class*="smol"]:not([data-component]) > *:not([data-unstyled]) {
   display: grid;
-  place-content: center;
   padding: 1rem;
   background-color: #E0D4F6;
   color: #675883;
@@ -49,6 +48,10 @@ ul {
   text-align: center;
   border-radius: 0.15em;
   border: 1px dashed;
+
+  &:not([data-text]) {
+    place-content: center;
+  }
 
   &[data-text] {
     font-size: 1.15rem;

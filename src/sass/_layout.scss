@@ -68,6 +68,8 @@ aside {
 }
 
 article {
+  max-width: calc(100ch - 2rem);
+
   > p + p {
     margin-top: 1rem;
   }

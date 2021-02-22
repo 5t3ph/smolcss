@@ -1,0 +1,72 @@
+---
+title: "Smol Transitions"
+categories: ["utility"]
+order: 9
+date: 2021-02-21
+templateEngineOverride: njk, md
+---
+
+{% set resize %}false{% endset %}
+
+{% set description %}
+
+This set of performant CSS transition utility classes include CSS custom properties for scaling the transition property and duration. We're doing a few things in this demo that you may want to keep in mind if you use them.
+
+First, we're triggering the transition of the _child elements_ on `:hover` of the parent. The reason for this is that for transitions that move the element, it could end up moving out from under the mouse and causing a flicker between states. The `rise` transition is particularly in danger of that behavior.
+
+Second, we wrap our effect class in a media query check for `prefers-reduced-motion: reduce` that instantly jumps the transition to the final state. This is to comply with the request for reduced motion by effectively disabling the animated part of the transition.
+
+{% endset %}
+
+{% set css %}
+.smol-transitions > * {
+  --transition-property: transform;
+  --transition-duration: 180ms;
+
+  transition: var(--transition-property) var(--transition-duration) ease-in-out;
+}
+
+.rise:hover > * {
+  transform: translateY(-25%);
+}
+
+.rotate:hover > * {
+  transform: rotate(15deg);
+}
+
+.zoom:hover > * {
+  transform: scale(1.1);
+}
+
+.fade > * {
+  --transition-property: opacity;
+  --transition-duration: 500ms;
+}
+
+.fade:hover > * {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .smol-transitions > * {
+    --transition-duration: 0.01ms;
+  }
+}
+{% endset %}
+
+{% set html %}
+<ul class="smol-flexbox-grid" style="--min: 20ch">
+  <li class="smol-transitions rise"><span>rise</span></li>
+  <li class="smol-transitions rotate"><span>rotate</span></li>
+  <li class="smol-transitions zoom"><span>zoom</span></li>
+  <li class="smol-transitions fade"><span>fade</span></li>
+</ul>
+{% endset %}
+
+{% set resourceLink %}{% endset %}
+
+{% set codepenForm %}
+{% postToCodepen title, page.fileSlug, categories, css, html, 'flex' %}
+{% endset %}
+
+{% include "code.njk" %}
