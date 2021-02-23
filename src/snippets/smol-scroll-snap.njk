@@ -14,9 +14,11 @@ Modern CSS has gifted us a series of properties that enable setting up more cont
 
 To align the scroll items, we're using grid and updating the orientation of child items using `grid-auto-flow: column`. Then the width of the grid children is set using `min()` which selects the _minimum computed value_ between the options provided. The selected width options in this demo results in a large section of neighboring items being visible in the scrollable area for large viewports, while on smaller viewports the scrollable area is mostly consumed by the current scroll item.
 
-_While this is a very cool feature set, use with care!_ Be sure to test your implementation to ensure its not inaccessible. Test across a variety of devices, and with desktop zoom particularly at levels of 200% and 400%. Try it out with a screen reader and make sure you can navigate to all content.
+_While this is a very cool feature set, use with care!_ Be sure to test your implementation to ensure its not inaccessible. Test across a variety of devices, and with desktop zoom particularly at levels of 200% and 400% to check for overlap and how a changed aspect ratio affects scroll items. Try it out with a screen reader and make sure you can navigate to all content.
 
 **Note**: Have caution when attempting to mix fullscreen scroll snap slideshows followed by normal flow content. This can damage the overall scrolling experience and even prevent access to content. Fullscreen scroll areas are also prone to issues for users of high desktop zoom due to high risk of overlapping content as the aspect ratio changes. In addition, fullscreen versions that use `y mandatory` result in "scroll hijacking" which can be frustrating to users.
+
+Also - you may have a pleasant smooth scroll experience on a touchpad or magic mouse. But mouse users who rely on interacting with the scroll bar arrows or use a click wheel can have a jarring experience. This is due to browser and OS inconsistencies in handling the snapping based on input method (an issue was specifically reported for this demo using Chrome and Edge on PC).
 
 {% endset %}
 
