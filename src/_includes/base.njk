@@ -43,7 +43,7 @@
     {{ content | safe }}
   </main>
   <aside>
-    <p> <strong>More snippets coming soon!</strong> While you're waiting, check out my in-depth CSS tutorials on <a href="https://moderncss.dev">ModernCSS.dev</a> or <a href="https://5t3ph.dev/egghead">watch my front-end lessons on egghead</a>.</p>
+    <p> <strong>More snippets coming soon!</strong> While you're waiting, check out my in-depth CSS tutorials on <a href="https://moderncss.dev">ModernCSS.dev</a> or <a href="https://5t3ph.dev/egghead">watch my front-end lessons on egghead</a>. Start practicing using modern CSS by contributing to my community project <a href="https://stylestage.dev">Style Stage</a>.</p>
   </aside>
   <footer>
   <p>&copy; {% year %} <a href="https://twitter.com/5t3ph">Stephanie Eckles</a> of <a href="https://moderncss.dev">ModernCSS.dev</a> • <a href="/feed/">Subscribe to RSS</a> • <a href="https://www.buymeacoffee.com/moderncss">Buy Me a Coffee</a></p>
@@ -60,18 +60,18 @@
     {{ js | jsmin | safe }}
   </script>
   <script>
-  {%- if 'smolcss' in meta.url %}
-  const demoLink = location.hash;
-  if(demoLink) {
-    plausible('Demo Link', { props: { Link: demoLink } });
-  }
+    {%- if 'smolcss' in meta.url %}
+    const demoLink = location.hash;
+    if(demoLink) {
+      plausible('Demo Link', { props: { Link: demoLink } });
+    }
 
-  document.querySelectorAll('button[type="submit"]').forEach(button => {
-    button.addEventListener('click', (el) => {
-      plausible('CodePen', { props: { Demo: el.target.dataset.name } });
+    document.querySelectorAll('button[type="submit"]').forEach(button => {
+      button.addEventListener('click', (el) => {
+        plausible('CodePen', { props: { Demo: el.target.dataset.name } });
+      });
     });
-  });
-  {% endif %}
+    {% endif %}
   </script>
 </body>
 </html>

@@ -1,0 +1,101 @@
+---
+title: "Smol Article Anchors"
+categories: ["grid", "component", "utility"]
+order: 11
+date: 2021-02-24
+templateEngineOverride: njk, md
+---
+
+{% set resize %}false{% endset %}
+
+{% set description %}
+
+Anchor links have had quite an evolution over the years. Have you checked if your implementation is as accessible as it can be? This demo starts with an accessible DOM structure as [researched by Amber Wilson](https://amberwilson.co.uk/blog/are-your-anchor-links-accessible/), and then uses CSS grid to position the anchor link element.
+
+**Note**: When using grid or flexbox to change the visual order vs the DOM order, always be cautious of breaking expectations in visual focus order. In this case, we know the headline itself will not contain a link and so we are still able to maintain a visually logical focus order.
+
+This demo also features an old pseudo class that is often forgotten which is `:target`. Go ahead - click the anchor in this demo or across this site. Thanks to `:target` coupled with `::before`, you'll be greeted with a friendly message to help identify the _target_ of the hashed URL.
+
+Finally, we've also included `scroll-margin-top` which adds margin _only_ to an active page target. In other words, upon clicking an anchor link or visiting the site with a hashed URL, the scroll point will be above the target by the value of `scroll-margin-top` (_not yet available in Safari_). You may need to try an anchor on another demo farther up the page to see this effect until there are more demos added 😊
+
+**Bonus**: Notice the properties set on `:focus` to adjust the `outline` position with `outline-offset`. And check out `:hover` to see `text-underline-offset` used to adjust the position of the underline.
+
+{% endset %}
+
+{% set css %}
+.smol-article-anchor {
+  display: grid;
+  grid-template-columns: min-content auto;
+  position: relative;
+  margin-top: 2em;
+  /* You could pull this property out and
+  generalize it under the selector `[id]` as
+  it won't affect flow layout or regular margins */
+  scroll-margin-top: 2em;
+}
+
+.smol-article-anchor:target::before {
+  content: "Is it me you're looking for?";
+  position: absolute;
+  font-size: .9rem;
+  top: -1.25rem;
+  left: 0;
+  font-style: italic;
+  color: currentColor;
+}
+
+.smol-article-anchor a {
+  grid-row-start: 1;
+  align-self: start;
+  font-size: 1rem;
+  line-height: 1;
+  /* We're using `transform` vs. margins */
+  transform: translateX(-50%) translateY(25%);
+  text-decoration: none;
+  /* Be sure to check that your own colors still meet
+  or exceed 4.5:1 contrast when using lowering opacity */
+  opacity: 0.75;
+}
+
+.smol-article-anchor a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  opacity: 1;
+}
+
+.smol-article-anchor a:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 0.15em;
+}
+
+/* Visually hidden while remaining accessible to
+assistive tech like screen readers */
+.smol-article-anchor-hidden {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+}
+{% endset %}
+
+{% set html %}
+<div id="smol-article-anchor-title" data-component class="smol-article-anchor">
+  <h3 data-component>A Wonderful Article Headline</h3>
+  <a href="#smol-article-anchor-title">
+    <span aria-hidden="true">#</span>
+    <span class="smol-article-anchor-hidden">Section titled A Wonderful Article Headline</span>
+  </a>
+</div>
+{% endset %}
+
+{% set resourceLink %}
+
+[Learn more about the `:target` pseudo class](https://moderncss.dev/guide-to-advanced-css-selectors-part-two/) in part two of my guide to advanced CSS selectors.
+
+{% endset %}
+
+{% set codepenForm %}
+{% postToCodepen title, page.fileSlug, categories, css, html %}
+{% endset %}
+
+{% include "code.njk" %}

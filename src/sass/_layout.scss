@@ -180,3 +180,32 @@ $category-colors: (
     transform: translateY(-5%);
   }
 }
+
+.hidden {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+}
+
+.headline {
+  display: grid;
+  grid-template-columns: min-content auto;
+
+  .anchor {
+    grid-row-start: 1;
+    align-self: start;
+    font-size: 1rem;
+    line-height: 1;
+    transform: translateX(-50%) translateY(25%);
+    text-decoration: none;
+    opacity: 0.75;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+      text-underline-offset: 0.25em;
+      opacity: 1;
+    }
+  }
+}
