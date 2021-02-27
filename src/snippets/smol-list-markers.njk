@@ -1,0 +1,82 @@
+---
+title: "Smol List Markers"
+categories: ["utility"]
+order: 12
+date: 2021-02-27
+templateEngineOverride: njk, md
+---
+
+{% set resize %}false{% endset %}
+
+{% set description %}
+
+Support for `::marker` is now available across all modern browsers! This pseudo-selector allows customizing the "bullet" for unordered lists and the numeral for ordered lists without other pseudo element hacks.
+
+**Note**: `::marker` only allows a select few properties to be modified including `animation-*`, `color`, `content`, `direction`, `font-*`, `transition-*`, `unicode-bidi`, and `white-space`.
+
+The use of `::marker` is a great progressive enhancement that can be used safely without any special consideration since the default experience should always acceptable.
+
+**Bonus**: Check out how the emoji are being inserted thanks to the `content` property's ability to access custom data attributes! (This appears not yet supported for `::marker` in Safari)
+
+{% endset %}
+
+{% set css %}
+.smol-list-markers {
+  --marker-color: #A150FB;
+  
+  padding: 0;
+  margin: 0 0 0 2em;
+}
+
+.smol-list-markers li {
+  padding-left: 0.5em;
+}
+
+.smol-list-markers li + li {
+  margin-top: 0.5em;
+}
+
+.smol-list-markers li::marker {
+  color: var(--marker-color);
+}
+
+ul.smol-list-markers li::marker {
+  content: attr(data-icon);
+  font-size: 1.15em;
+}
+
+ol.smol-list-markers li::marker {
+  /* The `list-item`  counter is provided by 
+  the browser for lists */
+  content: counter(list-item); 
+  font-family: cursive;
+  font-size: 1.5em;
+}
+{% endset %}
+
+{% set html %}
+<div data-component class="smol-css-grid">
+  <ul class="smol-list-markers" data-component>
+    <li data-icon="🟣">Chocolate cake pastry toffee tootsie roll</li>
+    <li data-icon="💜">Cake bear claw liquorice oat cake oat cake cheesecake</li>
+    <li data-icon="🟪">Ice cream soufflé carrot cake jelly-o bonbon</li>
+  </ul>
+  <ol class="smol-list-markers" data-component>
+    <li>Chocolate cake pastry toffee tootsie roll</li>
+    <li>Cake bear claw liquorice oat cake oat cake cheesecake</li>
+    <li>Ice cream soufflé carrot cake jelly-o bonbon</li>
+  </ol>
+</div>
+{% endset %}
+
+{% set resourceLink %}
+
+If you need more style control, you may still want to use an alternate method. Review my tutorial on creating [totally custom list styles](https://moderncss.dev/totally-custom-list-styles/).
+
+{% endset %}
+
+{% set codepenForm %}
+{% postToCodepen title, page.fileSlug, categories, css, html, 'grid' %}
+{% endset %}
+
+{% include "code.njk" %}

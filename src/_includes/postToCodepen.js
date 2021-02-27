@@ -30,7 +30,7 @@ body {
   displayStyles: `
 /* Additional demo styles from SmolCSS.dev
    Not all styles may be needed for this pen */
-ul {
+body > ul {
   list-style: none;
   margin: 0;
 
