@@ -82,6 +82,10 @@ module.exports = function (eleventyConfig) {
     }
   );
 
+  eleventyConfig.setBrowserSyncConfig({
+    open: true,
+  });
+
   return {
     dir: {
       input: "src",
