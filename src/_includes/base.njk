@@ -39,6 +39,14 @@
         Dark Mode
       </label>
   </header>
+  <details id="toc">
+    <summary role="button" aria-controls="toc-menu">Skip to:</summary>
+    <ul id="toc-menu">
+    {% for snippet in collections.snippets %}
+      <li><a href="#{{ snippet.fileSlug }}">{{ snippet.data.title }}</a></li>
+    {% endfor %}
+    </ul>
+  </details>
   <main>
     {{ content | safe }}
   </main>
@@ -55,6 +63,7 @@
 
   {% set js %}
   {% include "dark-mode.js" %}
+  {% include "dropdown.js" %}
   {% endset %}
   <script>
     {{ js | jsmin | safe }}

@@ -80,15 +80,18 @@ article {
   }
 }
 
-details {
+details:not(#toc) {
   margin-top: 2rem;
+
+  summary {
+    background-color: var(--color-on-surface);
+    color: var(--color-surface);
+  }
 }
 
 summary {
   cursor: pointer;
   padding: 0.5em;
-  background-color: var(--color-on-surface);
-  color: var(--color-surface);
 
   &:focus {
     outline: 2px solid transparent;
@@ -207,5 +210,27 @@ $category-colors: (
       text-underline-offset: 0.25em;
       opacity: 1;
     }
+  }
+}
+
+#toc {
+  position: relative;
+  margin: 0 auto;
+  width: fit-content;
+
+  ul {
+    margin: 0;
+    padding: 1rem 2rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(35ch, 90vw);
+    max-height: calc(100vh - 4em);
+    overflow-y: auto;
+    background: var(--color-surface);
+    box-shadow: 0.15em 0.15em 0.3em -0.1em rgba(black, 0.45);
+    border-radius: 0.25em;
+    border: 1px solid;
+    z-index: 1;
   }
 }
