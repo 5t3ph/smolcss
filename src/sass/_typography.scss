@@ -28,13 +28,17 @@ a {
 
 code:not([class]) {
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-  font-size: 0.9em;
-  font-size: 1.75ex;
+  font-size: 0.9rem;
+
   color: var(--color-on-purple);
   background-color: var(--color-purple);
   padding-right: 0.15em;
   padding-left: 0.15em;
   white-space: nowrap;
+
+  @supports (font-size: 1ch) {
+    font-size: 1.75ex;
+  }
 }
 
 blockquote {

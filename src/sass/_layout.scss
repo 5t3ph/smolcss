@@ -42,11 +42,13 @@ header {
 
 main {
   display: grid;
+  grid-gap: 5rem;
   grid-gap: max(15vh, 5rem);
 }
 
 main,
 aside {
+  max-width: 60rem;
   max-width: 100ch;
   margin: 8vh auto;
 }
@@ -68,6 +70,7 @@ aside {
 }
 
 article {
+  max-width: 60rem;
   max-width: calc(100ch - 2rem);
 
   > p + p {
