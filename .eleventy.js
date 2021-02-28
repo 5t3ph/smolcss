@@ -82,6 +82,10 @@ module.exports = function (eleventyConfig) {
     }
   );
 
+  eleventyConfig.addFilter("removeSmol", (title) => {
+    return title.replace("Smol ", "");
+  });
+
   eleventyConfig.setBrowserSyncConfig({
     open: true,
   });

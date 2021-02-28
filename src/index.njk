@@ -5,9 +5,9 @@ layout: "base.njk"
 ---
 
 {% for snippet in collections.snippets %}
-<article id="{{ snippet.fileSlug }}">
+<article>
   <div class="headline">
-    <h2>{{ snippet.data.title }}</h2>
+    <h2 id="{{ snippet.fileSlug }}">{{ snippet.data.title }}</h2>
     <a class="anchor" href="#{{ snippet.fileSlug }}">
       <span aria-hidden="true">#</span>
       <span class="hidden">Section titled {{ snippet.data.title }}</span>
