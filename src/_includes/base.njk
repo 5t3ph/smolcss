@@ -39,14 +39,16 @@
         Dark Mode
       </label>
   </header>
-  <details id="toc">
-    <summary role="button" aria-controls="toc-menu">Skip to:</summary>
-    <ul id="toc-menu">
-    {% for snippet in collections.snippets %}
-      <li><a href="#{{ snippet.fileSlug }}">{{ snippet.data.title }}</a></li>
-    {% endfor %}
-    </ul>
-  </details>
+  <nav>
+    <details id="toc">
+      <summary role="button" aria-controls="toc-menu">Skip to:</summary>
+      <ol id="toc-menu">
+      {% for snippet in collections.snippets %}
+        <li><a href="#{{ snippet.fileSlug }}">{{ snippet.data.title | removeSmol }}</a></li>
+      {% endfor %}
+      </ol>
+    </details>
+  </nav>
   <main>
     {{ content | safe }}
   </main>

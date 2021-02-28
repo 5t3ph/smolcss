@@ -218,9 +218,9 @@ $category-colors: (
   margin: 0 auto;
   width: fit-content;
 
-  ul {
+  ol {
     margin: 0;
-    padding: 1rem 2rem;
+    padding: 0.5rem 1rem 0.5rem 2.5rem;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -232,5 +232,20 @@ $category-colors: (
     border-radius: 0.25em;
     border: 1px solid;
     z-index: 1;
+
+    a {
+      display: block;
+      line-height: 1.3;
+      text-decoration: none;
+      padding: 0.5em 0;
+    }
+
+    li + li a {
+      border-top: 1px solid var(--color-purple);
+    }
+
+    li::marker {
+      color: var(--color-on-purple);
+    }
   }
 }
