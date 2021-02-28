@@ -46,7 +46,9 @@ module.exports = function (eleventyConfig) {
       let penTags = [...tags];
       penTags[tags.length] = "smolcss";
 
-      if (layout == "flex") {
+      if (layout == "unstyled") {
+        cssCode = `${snippetComment}\n\n${css}`;
+      } else if (layout == "flex") {
         cssCode += `${flex}${baseCSS}`;
       } else if (layout == "grid") {
         cssCode += `${grid}${baseCSS}`;

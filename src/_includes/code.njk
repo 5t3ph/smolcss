@@ -3,9 +3,11 @@
 
 {{ description | safe }}
 
+{%- if hideDemo !== 'true' -%}
 <style>
 {{ css | safe }}
 </style>
+{%- endif %}
 
 <details>
   <summary>CSS for "{{ title }}"</summary>
@@ -15,9 +17,11 @@
 ```
 </details>
 
+{%- if hideDemo !== 'true' -%}
 <div data-layout="{{ layout }}" class="demo {% if resize == 'false' %}no-resize{% endif %}">
 {{ html | safe }}
 </div>
+{%- endif %}
 
 {%- if resourceLink -%}
 <footer>

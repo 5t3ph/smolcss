@@ -1,0 +1,111 @@
+---
+title: "Smol Document Styles"
+categories: ["layout"]
+order: 13
+date: 2021-02-28
+templateEngineOverride: njk, md
+---
+
+{% set hideDemo %}true{% endset %}
+
+{% set description %}
+
+In 55 smol lines of CSS, we've created a set of reasonable document styles that is _just enough_ to produce a responsive, easily readable document given the use of semantic HTML. Thanks to `flexbox`, `viewport units`, and `clamp`, it's flexible for variable document lengths. The newly supported `:is()` deserves the most credit in terms of reducing lines of code.
+
+While lines of code (short or long) certainly doesn't automatically mean "quality", this demo shows that for a simple project you may not need a framework when a little dash of carefully applied CSS will do!
+
+In fact - it's a great starting point to expand from to use the other smol techniques 😉
+
+> This particular snippet is for an _entire webpage_ so consequently the demo is not available for direct preview. **Select "Open in Codepen"** to check out the following styles in context!
+
+{% endset %}
+
+{% set css %}
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 5vh clamp(1rem, 5vw, 3rem) 1rem;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  color: #222;
+}
+
+body > * {
+  --layout-spacing: max(8vh, 3rem);
+  width: 100%;
+  max-width: 70ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+main {
+  margin-top: var(--layout-spacing);
+}
+
+footer {
+  margin-top: auto;
+  padding-top: var(--layout-spacing);
+}
+
+footer p {
+  border-top: 1px solid #ccc;
+  padding-top: 0.25em;
+  font-size: 0.9rem;
+  color: #767676;
+}
+
+:is(h1, h2, h3) {
+  line-height: 1.2;
+}
+
+:is(h2, h3):not(:first-child) {
+  margin-top: 2em;
+}
+
+article * + * {
+  margin-top: 1em;
+}
+
+a {
+  color: navy;
+  text-underline-offset: 0.15em;
+}
+{% endset %}
+
+{% set html %}
+<header>
+  <h1>Minimal Modern CSS Document Styles</h1>
+</header>
+<main>
+  <article>
+    <h2>55 lines of CSS</h2>
+    <p>This set of reasonable document styles is <em>just enough</em> to produce a responsive, easily readable document given the use of semantic HTML. Thanks to flexbox, viewport units, and clamp, it's flexible for variable document lengths. The newlys supported :is() deserves the most credit in terms of reducing lines of code.</p>
+    <p>While lines of code (short or long) certainly doesn't automatically mean "quality", this demo shows that for a simple project you may not need a framework when a little dash of carefully applied CSS will do!</p>
+    <h3>No classes, all selectors and combinators</h3>
+    <p><strong>Little rusty on your selectors and combinators</strong>? Check out my two-part guide to advanced CSS selectors, <a href="https://moderncss.dev/guide-to-advanced-css-selectors-part-one/">starting with part one</a>.</p>
+    <p>Sugar plum pie sweet roll chocolate bar chocolate cake jujubes jelly beans lollipop. Caramels muffin toffee bonbon icing wafer toffee tiramisu lemon drops.</p>
+    <p>Macaroon cheesecake cupcake cotton candy jujubes cupcake. Chocolate sweet sugar plum candy dessert sesame snaps pie. Cupcake pudding oat cake. Halvah candy canes gingerbread tiramisu chupa chups lollipop. Toffee toffee cake. Jelly beans jelly beans chupa chups liquorice dessert donut caramels.</p>
+  </article>
+</main>
+<footer>
+  <p>&copy; 2021 Stephanie Eckles, author of <a href="https://smolcss.dev">SmolCSS.dev</a></p>
+</footer>
+{% endset %}
+
+{% set resourceLink %} 
+
+**Little rusty on your selectors and combinators**? Check out my two-part guide to advanced CSS selectors, [starting with part one](https://moderncss.dev/guide-to-advanced-css-selectors-part-one/).
+
+{% endset %}
+
+{% set codepenForm %}
+{% postToCodepen title, page.fileSlug, categories, css, html, 'unstyled' %}
+{% endset %}
+
+{% include "code.njk" %}
