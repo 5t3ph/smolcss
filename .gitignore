@@ -11,3 +11,6 @@ css
 
 # macOS related files
 .DS_Store
+
+# drafts
+smol-flexbox-variable-grid.njk

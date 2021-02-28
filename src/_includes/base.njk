@@ -82,6 +82,12 @@
         plausible('CodePen', { props: { Demo: el.target.dataset.name } });
       });
     });
+
+    document.querySelectorAll('#toc a').forEach(link => {
+      link.addEventListener('click', (el) => {
+        plausible('Nav', { props: { Demo: el.target.innerText } });
+      });
+    });
     {% endif %}
   </script>
 </body>
