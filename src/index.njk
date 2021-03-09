@@ -5,6 +5,9 @@ layout: "base.njk"
 ---
 
 {% for snippet in collections.snippets %}
+{% if loop.index0 === 1 %}
+<blockquote class="promo"><p><em>Hey there!</em> Early bird registration is available for my upcoming July workshop with Smashing Conference - <a href="">Level-Up With Modern CSS</a></p></blockquote>
+{% endif %}
 <article>
   <div class="headline">
     <h2 id="{{ snippet.fileSlug }}">{{ snippet.data.title }}</h2>

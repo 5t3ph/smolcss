@@ -54,4 +54,12 @@ blockquote {
   > * {
     font-size: inherit;
   }
+
+  &.promo {
+    font-size: 1.25rem;
+    border: 1px solid;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 0.25em;
+  }
 }
