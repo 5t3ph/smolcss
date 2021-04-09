@@ -41,7 +41,7 @@ code:not([class]) {
   }
 }
 
-blockquote {
+blockquote:not(.smol-unbreakable-box) {
   display: inline-block;
   font-size: 1.05rem;
   margin: 1rem 0 0;
