@@ -8,9 +8,11 @@ templateEngineOverride: njk, md
 
 {% set description %}
 
-This component features `aspect-ratio` and leans heavily on the pseudo selectors of `:not()`, `:is()`, `:first-child`, and `:last-child`. The result is a composable card component that _just works_ with your desired semantic internal content.
+This component features `aspect-ratio` and leans heavily on the pseudo selectors of `:not()`, `:first-child`, and `:last-child`. The result is a composable card component that _just works_ with your desired semantic internal content.
 
-**Note**: Both `aspect-ratio` and `:is()` are in progress rolling out to the latest versions of modern browsers, so you may need to create fallbacks for your unique audience and consider this solution as a progressive enhancement. Fallback considerations are included as noted with comments.
+With [CSS Selectors Level 4](https://drafts.csswg.org/selectors-4/#negation), the enhanced version of `:not()` now allows a selector list. This ability is fairly [well supported in modern browsers](https://caniuse.com/css-not-sel-list).
+
+**Note**: `aspect-ratio` is in progress rolling out to the latest versions of modern browsers. So, you may need to create fallbacks for your unique audience and consider this solution as a progressive enhancement. Fallback considerations are included as noted with comments.
 
 > This solution also uses the [Smol Responsive CSS Grid](#smol-css-grid) to contain the cards.
 
@@ -32,14 +34,18 @@ This component features `aspect-ratio` and leans heavily on the pseudo selectors
 }
 
 .smol-card-component > img {
-  aspect-ratio: var(--img-ratio);
+  /* Fallback for `aspect-ratio` of defining
+  a height */
+  height: max(18vh, 12rem);
   object-fit: cover;
   width: 100%;
 }
 
-@supports not (aspect-ratio: 1/1) {
+/* When supported, use `aspect-ratio` */
+@supports (aspect-ratio: 1) {
   .smol-card-component > img {
-    height: max(18vh, 12rem);
+    aspect-ratio: var(--img-ratio);
+    height: auto;
   }
 }
 
@@ -52,7 +58,7 @@ This component features `aspect-ratio` and leans heavily on the pseudo selectors
   margin-top: auto;
 }
 
-.smol-card-component > *:not(img) {
+.smol-card-component > :not(img) {
   margin-left: 1rem;
   margin-right: 1rem;
 }
@@ -61,17 +67,13 @@ This component features `aspect-ratio` and leans heavily on the pseudo selectors
   margin-top: 1rem;
 }
 
-.smol-card-component > :last-of-type:not(img):not(:is(h2, h3, h4)) {
+/* Enhanced `:not()` accepts a selector list,
+but as a fallback you can chain `:not()` instead */
+.smol-card-component > :last-of-type:not(img, h2, h3, h4) {
   margin-bottom: 1rem;
 }
 
-/* Include webkit rule for best current support */
-.smol-card-component > :not(:-webkit-any(h2,h3,h4)) {
-  font-size: 0.9rem;
-}
-
-/* Preferred `:is()` selector for most modern browsers */
-.smol-card-component > :not(:is(h2,h3,h4)) {
+.smol-card-component > :not(h2, h3, h4) {
   font-size: 0.9rem;
 }
 
