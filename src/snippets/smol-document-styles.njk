@@ -38,8 +38,8 @@ body {
 
 body > * {
   --layout-spacing: max(8vh, 3rem);
-  width: 100%;
-  max-width: 70ch;
+  --max-width: 70ch;
+  width: min(100%, var(--max-width));
   margin-left: auto;
   margin-right: auto;
 }
