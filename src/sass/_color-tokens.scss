@@ -16,6 +16,8 @@ $color-on-green: #4C695A !default;
 $color-purple: #E0D4F6 !default;
 $color-on-purple: #675883 !default;
 
+$base-color-tokens: ("surface", "red", "yellow", "blue", "green", "purple");
+
 $color-tokens: (
   "color-surface": $color-surface,
   "color-on-surface": $color-on-surface,

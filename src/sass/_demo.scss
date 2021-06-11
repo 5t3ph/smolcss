@@ -89,3 +89,24 @@
     }
   }
 }
+
+.smol-focus-styles {
+  display: grid;
+  gap: 2rem;
+
+  li {
+    display: grid;
+    gap: 0.5rem;
+    justify-content: start;
+  }
+
+  button {
+    color: var(--color-on-purple);
+    background-color: var(--color-purple);
+    border-style: solid;
+    border-radius: 4px;
+    font: inherit;
+    padding: 0.25em 0.5em;
+    cursor: pointer;
+  }
+}

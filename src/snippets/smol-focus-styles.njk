@@ -1,0 +1,102 @@
+---
+title: "Smol Focus Styles"
+categories: ["utility"]
+order: 14
+date: 2021-06-10
+templateEngineOverride: njk, md
+---
+
+{% set resize %}false{% endset %}
+
+{% set description %}
+
+Focus styles are incredibly important for the accessibility of your application. But, it can be difficult to manage them across changing contexts.
+
+The following solution takes advantage of custom properites and `:is()` to set reasonable defaults for interactive elements. Then, individual instances can override each setting by simply providing an alternate value for the custom property.
+
+This solution sets `currentColor` as the `outline-color` which works in many contexts. One that it might not is for buttons, in which case you could update `--outline-color` to use the same color as the button background, for example.
+
+Additionally, this demonstrates one of the newly available CSS pseudo-class selectors: `focus-visible`. This selector is intended to only display focus styles when the browser detects that they should be visible (you may encounter the term "heuristics"). For now, we've setup some fallbacks so that a focus style is presented even when a browser doesn't support `:focus-visible` quite yet.
+
+**Note**: Due to using `:focus-visible`, you may not see focus styles on the links and buttons unless you tab to them.
+
+{% endset %}
+
+{% set css %}
+
+/* For "real-world" usage, you do not need to scope
+these custom properties */
+.smol-focus-styles :is(a, button, input, textarea) {
+  /* Using max() ensures at least a value of 2px, 
+  while allowing the possibility of scaling 
+  relative to the component */
+  --outline-unit: max(2px, 0.08em);
+  --outline-style: solid;
+  --outline-color: currentColor;
+}
+
+/* Base :focus styles for fallback purposes */
+.smol-focus-styles :is(a, button, input, textarea):focus {
+  outline: var(--outline-unit) var(--outline-style) var(--outline-color);
+  outline-offset: var(--outline-unit);
+}
+
+/* Remove base :focus styles when :focus-visible is available */
+.smol-focus-styles :is(a, button, input, textarea):focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Final :focus-visible styles */
+.smol-focus-styles :is(a, button, input, textarea):focus-visible {
+  outline: var(--outline-unit) var(--outline-style) var(--outline-color);
+  outline-offset: var(--outline-unit);
+}
+
+/* Demonstration of customizing */
+.smol-focus-styles li:nth-of-type(2) a {
+  --outline-style: dashed;
+}
+
+.smol-focus-styles input {
+  --outline-color: red;
+}
+
+.smol-focus-styles textarea {
+  --outline-unit: 0.25em;
+  --outline-style: dotted;
+  --outline-color: green;
+}
+
+.smol-focus-styles li:nth-of-type(4) button {
+  font-size: 2.5rem;
+}
+{% endset %}
+
+{% set html %}
+<ul data-component class="smol-focus-styles">
+  <li><a href="javascript:;">A link</a></li>
+  <li><a href="javascript:;">A link customized to dashed style</a></li>
+  <li><button type="button">A button</button></li>
+  <li><button type="button">A large button</button></li>
+  <li>
+    <label for="smol-focus-input">Customized outline color</label>
+    <input id="smol-focus-input" type="text">
+  </li>
+  <li>
+    <label for="smol-focus-textarea">Fully customized</label>
+    <textarea id="smol-focus-textarea" rows="3"></textarea>
+  </li>
+</ul>
+{% endset %}
+
+{% set resourceLink %}
+
+Learn more about `:focus-visible` in my Smashing [article on newly supported CSS pseudo-class selectors](https://www.smashingmagazine.com/2021/04/guide-supported-modern-css-pseudo-class-selectors/). You can also find more [tips on how CSS impacts accessibility](https://moderncss.dev/modern-css-upgrades-to-improve-accessibility/) on ModernCSS.
+
+{% endset %}
+
+{% set codepenForm %}
+{% postToCodepen title, page.fileSlug, categories, css, html %}
+{% endset %}
+
+{% include "code.njk" %}
