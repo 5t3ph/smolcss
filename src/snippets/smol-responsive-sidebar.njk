@@ -8,7 +8,7 @@ templateEngineOverride: njk, md
 
 {% set description %}
 
-Several layers of delicous modern CSS goodness here! First, we're using `fit-content` to handle the sidebar sizing. This allows the sidebar to grow _up to_ the defined value, but only if it _needs to_, else it will use/shrink to the equivalent of `min-content`. 
+Several layers of delicious modern CSS goodness here! First, we're using `fit-content` to handle the sidebar sizing. This allows the sidebar to grow _up to_ the defined value, but only if it _needs to_, else it will use/shrink to the equivalent of `min-content`.
 
 Next, we use `minmax` for the main content. Why? Because if we only use `1fr` then eventually our sidebar and main will share 50% of the space, and we want the main area to always be wider. We also nest `min` to ask the browser to use the minimum of _either_ of the options. The result in this case is use of `50vw` on mobile-sized viewports, and `30ch` on larger viewports. And, when there's room, it also stretches to `1fr` for the _max_ part of `minmax` 🙌🏽
 
