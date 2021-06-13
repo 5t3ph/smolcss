@@ -8,7 +8,7 @@ templateEngineOverride: njk, md
 
 {% set description %}
 
-Create an intrinsically responsive grid layout, optionally using a CSS custom property to extend to varable contexts. Each column will resize at the same rate, and break to a new row if the width reaches the `--min` value.
+Create an intrinsically responsive grid layout, optionally using a CSS custom property to extend to varable contexts. Each column will resize at the same rate, and items will begin to break to a new row if the width reaches the `--min` value.
 
 {% endset %}
 
@@ -19,7 +19,9 @@ Create an intrinsically responsive grid layout, optionally using a CSS custom pr
 
   display: grid;
   grid-gap: var(--gap);
-  grid-template-columns: repeat(auto-fit, minmax(var(--min), 1fr));
+  /* min() with 100% prevents overflow
+  in extra narrow spaces */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
 }
 {% endset %}
 
