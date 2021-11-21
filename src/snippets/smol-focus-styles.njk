@@ -28,7 +28,7 @@ Additionally, this demonstrates one of the newly available CSS pseudo-class sele
 
 /* For "real-world" usage, you do not need to scope
 these custom properties */
-.smol-focus-styles :is(a, button, input, textarea) {
+.smol-focus-styles :is(a, button, input, textarea, summary) {
   /* Using max() ensures at least a value of 2px, 
   while allowing the possibility of scaling 
   relative to the component */
@@ -38,20 +38,20 @@ these custom properties */
 }
 
 /* Base :focus styles for fallback purposes */
-.smol-focus-styles :is(a, button, input, textarea):focus {
-  outline: var(--outline-unit) var(--outline-style) var(--outline-color);
-  outline-offset: var(--outline-unit);
+.smol-focus-styles :is(a, button, input, textarea, summary):focus {
+  outline: var(--outline-size) var(--outline-style) var(--outline-color);
+  outline-offset: var(--outline-offset, var(--outline-size));
+}
+
+/* Final :focus-visible styles */
+.smol-focus-styles :is(a, button, input, textarea):focus-visible {
+  outline: var(--outline-size) var(--outline-style) var(--outline-color);
+  outline-offset: var(--outline-offset, var(--outline-size));
 }
 
 /* Remove base :focus styles when :focus-visible is available */
 .smol-focus-styles :is(a, button, input, textarea):focus:not(:focus-visible) {
   outline: none;
-}
-
-/* Final :focus-visible styles */
-.smol-focus-styles :is(a, button, input, textarea):focus-visible {
-  outline: var(--outline-unit) var(--outline-style) var(--outline-color);
-  outline-offset: var(--outline-unit);
 }
 
 /* Demonstration of customizing */
