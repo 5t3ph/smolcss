@@ -20,7 +20,8 @@ Bonus features in this demo include defining the `h3` size using `clamp()` for _
 .smol-stack-layout {
   display: grid;
   grid-template-areas: "stack";
-  aspect-ratio: 16/9;
+  /* Set within the HTML for the demo */
+  aspect-ratio: var(--stack-aspect-ratio);
   background-color: #200070;
 }
 
@@ -41,7 +42,7 @@ Bonus features in this demo include defining the `h3` size using `clamp()` for _
   padding: 5vh 2vw;
 }
 
-.smol-stack-layout small {
+.smol-stack-layout--video small {
   align-self: end;
   justify-self: start;
   padding: 0 0 0.25em 0.5em;
@@ -57,7 +58,7 @@ Bonus features in this demo include defining the `h3` size using `clamp()` for _
 {% endset %}
 
 {% set html %}
-<div data-component class="smol-stack-layout">
+<div data-component class="smol-stack-layout smol-stack-layout--video" style="--stack-aspect-ratio: 16/9">
   <video muted autoplay>
     <source src="{{ meta.url }}/assets/video.mp4" type="video/mp4">
   </video>

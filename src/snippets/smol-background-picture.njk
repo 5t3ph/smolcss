@@ -1,0 +1,93 @@
+---
+title: "Smol Background Picture"
+categories: ["grid", "component"]
+order: 8
+date: 2022-01-05
+templateEngineOverride: njk, md
+---
+
+{% set description %}
+
+We can reuse the Smol Stack to enable layering the `<picture>` element with content as a replacement for using `background-image`. This will let you get the performance benefits of modern image formats like WebP, as well as being able to define `alt` text for accessibility.
+
+If you haven't worked with the `picture` element before, note that you apply image-related CSS to the internal `img` element.
+
+To emulate `background-image` type of behavior, we use `object-fit: cover` just like we also used for the [image gallery](#smol-aspect-ratio-gallery).
+
+**Bonus technique**: improve text contrast of the overlaid content by applying `filter` to the `img`. With the filter, we reduce `brightness` to darken the image while also increasing the `saturate` value to recuperate some of the image vibrancy. These are set with custom properties so that you can easily modify them per-instance if needed to ensure the best contrast.
+
+> This solution also uses the [Smol Stack Layout](#smol-stack-layout).
+
+{% endset %}
+
+{% set css %}
+.smol-background-picture img {
+  --background-img-brightness: 0.45;
+  --background-img-saturate: 1.25;
+
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  /* decrease brightness to improve text contrast */
+  filter: 
+    brightness(var(--background-img-brightness)) 
+    saturate(var(--background-img-saturate));
+}
+
+/* Necessary if not already within a reset */
+.smol-background-picture :is(img, picture) {
+  display: block;
+}
+
+.smol-background-picture__content {
+  /* ensure stacking context above the picture */
+  position: relative;
+  align-self: center;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+
+.smol-background-picture__content p {
+  font-size: clamp(1.35rem, 5vw, 1.75rem);
+  line-height: 1.3;
+}
+{% endset %}
+
+{% set html %}
+<div data-component class="smol-stack-layout smol-background-picture">
+  <picture>
+    <source
+      type="image/webp"
+      srcset="
+        {{ meta.url }}/assets/background-picture/landscape-w275.webp 275w,
+        {{ meta.url }}/assets/background-picture/landscape-w683.webp 683w,
+        {{ meta.url }}/assets/background-picture/landscape-w860.webp 860w"
+    >
+    <img 
+      srcset="
+        {{ meta.url }}/assets/background-picture/landscape-w275.jpg 275w,
+        {{ meta.url }}/assets/background-picture/landscape-w683.jpg 683w,
+        {{ meta.url }}/assets/background-picture/landscape-w860.jpg 860w"
+      src="{{ meta.url }}/assets/background-picture/landscape-w683.jpg"
+      alt="">
+  </picture>
+  <div data-component class="smol-background-picture__content">
+    <p>Text overlaid on a picture element</p>
+    <p><small>Photo by <a href="https://unsplash.com/@luckybeanz?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Mark Harpur</a> on <a href="https://unsplash.com/s/photos/landscape?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  </small></p>
+  </div>
+</div>
+{% endset %}
+
+{% set resourceLink %}
+
+Learn more about using `picture` in my overview of [handling responsive image display](https://12daysofweb.dev/2021/image-display-elements/).
+
+{% endset %}
+
+{% set codepenForm %}
+{% postToCodepen title, page.fileSlug, categories, css, html %}
+{% endset %}
+
+{% include "code.njk" %}
