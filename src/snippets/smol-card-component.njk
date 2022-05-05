@@ -12,7 +12,7 @@ This component features `aspect-ratio` and leans heavily on the pseudo selectors
 
 With [CSS Selectors Level 4](https://drafts.csswg.org/selectors-4/#negation), the enhanced version of `:not()` now allows a selector list. This ability is fairly [well supported in modern browsers](https://caniuse.com/css-not-sel-list).
 
-**Note**: `aspect-ratio` is in progress rolling out to the latest versions of modern browsers. So, you may need to create fallbacks for your unique audience and consider this solution as a progressive enhancement. Fallback considerations are included as noted with comments.
+**Note**: `aspect-ratio` is available in the latest versions of modern browsers, but you may need to create fallbacks for your unique audience and consider this solution as a progressive enhancement. Review the [Smol Aspect Ratio Gallery](#smol-aspect-ratio-gallery) for one method of creating a fallback.
 
 > This solution also uses the [Smol Responsive CSS Grid](#smol-css-grid) to contain the cards.
 
@@ -24,29 +24,16 @@ With [CSS Selectors Level 4](https://drafts.csswg.org/selectors-4/#negation), th
 
   display: flex;
   flex-direction: column;
+  /* Supported for flexbox in modern browsers since April 2021 */
+  gap: 1rem;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.35);
   border-radius: 0.5rem;
 }
 
-/* Soon we can replace this with: gap: 1rem; */
-.smol-card-component > * + * {
-  margin-top: 1rem;
-}
-
 .smol-card-component > img {
-  /* Fallback for `aspect-ratio` of defining
-  a height */
-  height: max(18vh, 12rem);
+  aspect-ratio: var(--img-ratio);
   object-fit: cover;
   width: 100%;
-}
-
-/* When supported, use `aspect-ratio` */
-@supports (aspect-ratio: 1) {
-  .smol-card-component > img {
-    aspect-ratio: var(--img-ratio);
-    height: auto;
-  }
 }
 
 .smol-card-component > img:first-child {

@@ -8,9 +8,9 @@ templateEngineOverride: md, njk
 
 {% set description %}
 
-The `aspect-ratio` property is nearing support in all major modern browsers, and by combining it with `object-fit` and flexbox, we can create a smol responsive gallery. If you're using Chrome or Edge, check out the CSS via your your browser Inspector to modify the CSS custom properties on `.smol-aspect-ratio-gallery` and see how they affect this layout.
+The `aspect-ratio` property [has support in all major modern browsers](https://caniuse.com/mdn-css_properties_aspect-ratio), and by combining it with `object-fit` and flexbox, we can create a smol responsive gallery. Check out the CSS via your your browser Inspector to modify the CSS custom properties on `.smol-aspect-ratio-gallery` and see how they affect this layout.
 
-For now, we're using `@supports` checks to fallback to setting a height for list items if `aspect-ratio` is not yet supported to achieve a similar effect cross-browser.
+The demo initially sets a height as a fallback for browsers that do not yet support `aspect-ratio`, and then uses `@supports` to upgrade to use of `aspect-ratio`.
 
 Note that `aspect-ratio` isn't just for images, but any element!
 
@@ -26,12 +26,13 @@ Note that `aspect-ratio` isn't just for images, but any element!
 }
 
 .smol-aspect-ratio-gallery li {
-  aspect-ratio: var(--aspect-ratio);
+  height: max(25vh, 15rem);
 }
 
-@supports not (aspect-ratio: 1/1) {
+@supports (aspect-ratio: 1) {
   .smol-aspect-ratio-gallery li {
-    height: max(25vh, 15rem);
+    aspect-ratio: var(--aspect-ratio);
+    height: auto;
   }
 }
 

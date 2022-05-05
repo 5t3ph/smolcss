@@ -1,0 +1,42 @@
+---
+title: "Smol Intrinsic Container"
+categories: ["utility", "layout"]
+order: 3
+date: 2022-05-05
+templateEngineOverride: njk, md
+---
+
+{% set description %}
+
+This modern CSS container recipe has three delicious ingredients: the `min()` function, the logical property `margin-inline`, and a custom property - `--container-max` - to make it flexible across infinite contexts.
+
+Logical properties are writing mode-aware properties that can also serve as shorthand in some cases. Here, `margin-inline` is a shorthand for setting both `margin-left` and `margin-right`, and [`margin-inline` has fairly good support](https://caniuse.com/mdn-css_properties_margin-inline). A PostCSS plugin is available if you're unable to upgrade quite yet for your audience.
+
+Review the "[Smol Flexible Unbreakable Boxes](#smol-unbreakable-boxes)" for an explanation of `min()`, 
+
+{% endset %}
+
+{% set css %}
+.smol-container {
+  width: min(100% - 3rem, var(--container-max, 60ch));
+  margin-inline: auto;
+}
+{% endset %}
+
+{% set html %}
+<div data-container-style class="smol-container">
+  <p data-text data-unstyled>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex quos doloribus autem praesentium quod voluptatem quaerat accusamus labore ullam, omnis corrupti aperiam natus fuga repudiandae repellendus, ipsa enim vitae ut!</p>
+</div>
+{% endset %}
+
+{% set resourceLink %}
+
+Get a bit more info about this container class and [review additional uses of `min()`](https://moderncss.dev/practical-uses-of-css-math-functions-calc-clamp-min-max/#the-modern-css-container-class) and other CSS math functions on ModernCSS.dev.
+
+{% endset %}
+
+{% set codepenForm %}
+{% postToCodepen title, page.fileSlug, categories, css, html %}
+{% endset %}
+
+{% include "code.njk" %}
