@@ -1,7 +1,8 @@
 ---
-title: "Smol Avatar List Component"
-categories: ["grid", "layout", "component"]
-order: 9
+meta:
+  title: "Smol Avatar List Component"
+  categories: ["grid", "layout", "component"]
+  order: 9
 date: 2021-02-20
 templateEngineOverride: njk, md
 ---
@@ -104,7 +105,7 @@ ICYMI earlier - check out my quick [video lesson on object-fit](https://egghead.
 {% endset %}
 
 {% set codepenForm %}
-{% postToCodepen title, page.fileSlug, categories, css, html %}
+{% postToCodepen meta.title, page.fileSlug, meta.categories, css, html %}
 {% endset %}
 
 {% include "code.njk" %}

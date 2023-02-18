@@ -1,7 +1,8 @@
 ---
-title: "Smol Responsive Flexbox Grid"
-categories: ["flexbox", "layout"]
-order: 2
+meta:
+  title: "Smol Responsive Flexbox Grid"
+  categories: ["flexbox", "layout"]
+  order: 2
 date: 2021-02-10
 templateEngineOverride: njk, md
 ---
@@ -42,7 +43,7 @@ Learn more about [creating a responsive flexbox grid solution](https://moderncss
 {% endset %}
 
 {% set codepenForm %}
-{% postToCodepen title, page.fileSlug, categories, css, html %}
+{% postToCodepen meta.title, page.fileSlug, meta.categories, css, html %}
 {% endset %}
 
 {% include "code.njk" %}

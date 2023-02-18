@@ -1,7 +1,8 @@
 ---
-title: "Smol Intrinsic Container"
-categories: ["utility", "layout"]
-order: 3
+meta:
+  title: "Smol Intrinsic Container"
+  categories: ["utility", "layout"]
+  order: 3
 date: 2022-05-05
 templateEngineOverride: njk, md
 ---
@@ -36,7 +37,7 @@ Get a bit more info about this container class and [review additional uses of `m
 {% endset %}
 
 {% set codepenForm %}
-{% postToCodepen title, page.fileSlug, categories, css, html %}
+{% postToCodepen meta.title, page.fileSlug, meta.categories, css, html %}
 {% endset %}
 
 {% include "code.njk" %}

@@ -1,7 +1,8 @@
 ---
-title: "Smol Background Picture"
-categories: ["grid", "component"]
-order: 8
+meta:
+  title: "Smol Background Picture"
+  categories: ["grid", "component"]
+  order: 8
 date: 2022-01-05
 templateEngineOverride: njk, md
 ---
@@ -60,16 +61,16 @@ To emulate `background-image` type of behavior, we use `object-fit: cover` just 
     <source
       type="image/webp"
       srcset="
-        {{ meta.url }}/assets/background-picture/landscape-w275.webp 275w,
-        {{ meta.url }}/assets/background-picture/landscape-w683.webp 683w,
-        {{ meta.url }}/assets/background-picture/landscape-w860.webp 860w"
+        {{ siteMeta.url }}/assets/background-picture/landscape-w275.webp 275w,
+        {{ siteMeta.url }}/assets/background-picture/landscape-w683.webp 683w,
+        {{ siteMeta.url }}/assets/background-picture/landscape-w860.webp 860w"
     >
     <img 
       srcset="
-        {{ meta.url }}/assets/background-picture/landscape-w275.jpg 275w,
-        {{ meta.url }}/assets/background-picture/landscape-w683.jpg 683w,
-        {{ meta.url }}/assets/background-picture/landscape-w860.jpg 860w"
-      src="{{ meta.url }}/assets/background-picture/landscape-w683.jpg"
+        {{ siteMeta.url }}/assets/background-picture/landscape-w275.jpg 275w,
+        {{ siteMeta.url }}/assets/background-picture/landscape-w683.jpg 683w,
+        {{ siteMeta.url }}/assets/background-picture/landscape-w860.jpg 860w"
+      src="{{ siteMeta.url }}/assets/background-picture/landscape-w683.jpg"
       alt="">
   </picture>
   <div data-component class="smol-background-picture__content">
@@ -87,7 +88,7 @@ Learn more about using `picture` in my overview of [handling responsive image di
 {% endset %}
 
 {% set codepenForm %}
-{% postToCodepen title, page.fileSlug, categories, css, html %}
+{% postToCodepen meta.title, page.fileSlug, meta.categories, css, html %}
 {% endset %}
 
 {% include "code.njk" %}

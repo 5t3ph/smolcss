@@ -1,7 +1,8 @@
 ---
-title: "Smol Composable Card Component"
-categories: ["grid", "flexbox", "component"]
-order: 6
+meta:
+  title: "Smol Composable Card Component"
+  categories: ["grid", "flexbox", "component"]
+  order: 6
 date: 2021-02-14
 templateEngineOverride: njk, md
 ---
@@ -99,7 +100,7 @@ Learn more about CSS selectors in my two part guide, where part one covers [sele
 {% endset %}
 
 {% set codepenForm %}
-{% postToCodepen title, page.fileSlug, categories, css, html, 'grid' %}
+{% postToCodepen meta.title, page.fileSlug, meta.categories, css, html, 'grid' %}
 {% endset %}
 
 {% include "code.njk" %}

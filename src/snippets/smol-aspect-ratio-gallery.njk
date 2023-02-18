@@ -1,7 +1,8 @@
 ---
-title: "Smol Aspect Ratio Gallery"
-categories: ["flexbox", "layout", "component"]
-order: 6
+meta:
+  title: "Smol Aspect Ratio Gallery"
+  categories: ["flexbox", "layout", "component"]
+  order: 6
 date: 2021-02-14
 templateEngineOverride: md, njk
 ---
@@ -86,7 +87,7 @@ For an alternate method to `aspect-ratio` on this solution, check out my [flexbo
 {% endset %}
 
 {% set codepenForm %}
-{% postToCodepen title, page.fileSlug, categories, css, html, 'flex' %}
+{% postToCodepen meta.title, page.fileSlug, meta.categories, css, html, 'flex' %}
 {% endset %}
 
 {% include "code.njk" %}

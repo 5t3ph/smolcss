@@ -1,7 +1,8 @@
 ---
-title: "Smol Stack Layout"
-categories: ["grid", "layout"]
-order: 7
+meta:
+  title: "Smol Stack Layout"
+  categories: ["grid", "layout"]
+  order: 7
 date: 2021-02-19
 templateEngineOverride: njk, md
 ---
@@ -60,7 +61,7 @@ Bonus features in this demo include defining the `h3` size using `clamp()` for _
 {% set html %}
 <div data-component class="smol-stack-layout smol-stack-layout--video" style="--stack-aspect-ratio: 16/9">
   <video muted autoplay>
-    <source src="{{ meta.url }}/assets/video.mp4" type="video/mp4">
+    <source src="{{ siteMeta.url }}/assets/video.mp4" type="video/mp4">
   </video>
   <h3>Into The Unknown</h3>
   <small>Video from <a href="https://www.pexels.com/video/a-sky-full-of-stars-at-night-2646392/">Pexels</a></small>
@@ -74,7 +75,7 @@ For more examples of creating smol stack layouts, review my guide to [website he
 {% endset %}
 
 {% set codepenForm %}
-{% postToCodepen title, page.fileSlug, categories, css, html %}
+{% postToCodepen meta.title, page.fileSlug, meta.categories, css, html %}
 {% endset %}
 
 {% include "code.njk" %}

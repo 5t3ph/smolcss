@@ -24,16 +24,17 @@
   },
   "homepage": "https://smolcss.dev",
   "devDependencies": {
-    "@11ty/eleventy": "^1.0.1",
-    "@11ty/eleventy-plugin-rss": "^1.1.2",
-    "@11ty/eleventy-plugin-syntaxhighlight": "^4.0.0",
-    "a11y-color-tokens": "^0.5.0",
-    "autoprefixer": "^10.4.7",
-    "cssnano": "^5.1.7",
+    "@11ty/eleventy": "^2.0.0",
+    "@11ty/eleventy-plugin-rss": "^1.2.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
+    "@11tyrocks/eleventy-plugin-collection-schemas": "github:5t3ph/eleventy-plugin-collection-schemas",
+    "a11y-color-tokens": "^0.6.0",
+    "autoprefixer": "^10.4.13",
+    "cssnano": "^5.1.14",
     "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.13",
-    "postcss-cli": "^9.1.0",
-    "sass": "^1.51.0",
-    "terser": "^5.13.1"
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0",
+    "sass": "^1.58.0",
+    "terser": "^5.16.3"
   }
 }

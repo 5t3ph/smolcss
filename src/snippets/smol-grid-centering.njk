@@ -1,7 +1,8 @@
 ---
-title: "Smol Modern Centering"
-categories: ["grid", "layout"]
-order: 3
+meta:
+  title: "Smol Modern Centering"
+  categories: ["grid", "layout"]
+  order: 3
 date: 2021-02-10
 templateEngineOverride: njk, md
 ---
@@ -32,7 +33,7 @@ Just in case you're not convinced, [see more centering solutions](https://modern
 {% endset %}
 
 {% set codepenForm %}
-{% postToCodepen title, page.fileSlug, categories, css, html %}
+{% postToCodepen meta.title, page.fileSlug, meta.categories, css, html %}
 {% endset %}
 
 {% include "code.njk" %}

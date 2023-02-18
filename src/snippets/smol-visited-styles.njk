@@ -1,7 +1,8 @@
 ---
-title: "Smol Visited Styles"
-categories: ["utility"]
-order: 14
+meta:
+  title: "Smol Visited Styles"
+  categories: ["utility"]
+  order: 14
 date: 2021-03-02
 templateEngineOverride: njk, md
 ---
@@ -77,7 +78,7 @@ Una Kravets has a much more [in-depth reference on styling `:visited`](https://u
 {% endset %}
 
 {% set codepenForm %}
-{% postToCodepen title, page.fileSlug, categories, css, html %}
+{% postToCodepen meta.title, page.fileSlug, meta.categories, css, html %}
 {% endset %}
 
 {% include "code.njk" %}

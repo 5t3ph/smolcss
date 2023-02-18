@@ -1,7 +1,8 @@
 ---
-title: "Smol Article Anchors"
-categories: ["grid", "component", "utility"]
-order: 11
+meta:
+  title: "Smol Article Anchors"
+  categories: ["grid", "component", "utility"]
+  order: 11
 date: 2021-02-24
 templateEngineOverride: njk, md
 ---
@@ -95,7 +96,7 @@ assistive tech like screen readers */
 {% endset %}
 
 {% set codepenForm %}
-{% postToCodepen title, page.fileSlug, categories, css, html %}
+{% postToCodepen meta.title, page.fileSlug, meta.categories, css, html %}
 {% endset %}
 
 {% include "code.njk" %}

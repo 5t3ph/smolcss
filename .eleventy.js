@@ -8,6 +8,8 @@ const {
   flex,
 } = require("./src/_includes/postToCodepen");
 
+const collectionSchemas = require("@11tyrocks/eleventy-plugin-collection-schemas");
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget("./src/sass/");
   eleventyConfig.addPassthroughCopy("./src/*.png");
@@ -16,11 +18,12 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPlugin(pluginRss);
+  eleventyConfig.addPlugin(collectionSchemas);
 
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 
-  eleventyConfig.addCollection("snippets", function (collection) {
-    return collection.getFilteredByTag("snippet").sort((a, b) => {
+  eleventyConfig.addCollection("orderedSnippets", function (collection) {
+    return collection.getFilteredByTag("snippets").sort((a, b) => {
       return a.data.order - b.data.order;
     });
   });
@@ -68,8 +71,7 @@ module.exports = function (eleventyConfig) {
         css_pre_processor: "scss",
         css_starter: "neither",
         css_prefix: "autoprefixer",
-        head:
-          "<meta name='viewport' content='width=device-width, initial-scale=1'>",
+        head: "<meta name='viewport' content='width=device-width, initial-scale=1'>",
       };
       const JSONstring = JSON.stringify(penAttributes)
         .replace(/"/g, "&quot;")
@@ -84,7 +86,7 @@ module.exports = function (eleventyConfig) {
     }
   );
 
-  eleventyConfig.addFilter("removeSmol", (title) => {
+  eleventyConfig.addFilter("removeSmol", function (title) {
     return title.replace("Smol ", "");
   });
 

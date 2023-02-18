@@ -1,7 +1,8 @@
 ---
-title: "Smol Scroll Snap"
-categories: ["grid", "layout"]
-order: 10
+meta:
+  title: "Smol Scroll Snap"
+  categories: ["grid", "layout"]
+  order: 10
 date: 2021-02-21
 templateEngineOverride: njk, md
 ---
@@ -70,7 +71,7 @@ Also - you may have a pleasant smooth scroll experience on a touchpad or magic m
 {% set resourceLink %}{% endset %}
 
 {% set codepenForm %}
-{% postToCodepen title, page.fileSlug, categories, css, html %}
+{% postToCodepen meta.title, page.fileSlug, meta.categories, css, html %}
 {% endset %}
 
 {% include "code.njk" %}

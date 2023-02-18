@@ -1,7 +1,8 @@
 ---
-title: "Smol Transitions"
-categories: ["utility"]
-order: 9
+meta:
+  title: "Smol Transitions"
+  categories: ["utility"]
+  order: 9
 date: 2021-02-21
 templateEngineOverride: njk, md
 ---
@@ -66,7 +67,7 @@ Second, we wrap our effect class in a media query check for `prefers-reduced-mot
 {% set resourceLink %}{% endset %}
 
 {% set codepenForm %}
-{% postToCodepen title, page.fileSlug, categories, css, html, 'flex' %}
+{% postToCodepen meta.title, page.fileSlug, meta.categories, css, html, 'flex' %}
 {% endset %}
 
 {% include "code.njk" %}

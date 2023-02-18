@@ -4,18 +4,18 @@ eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-	<title>{{ meta.siteName }}</title>
-	<subtitle>{{ meta.siteDescription }}</subtitle>
-	{% set absoluteUrl %}{{ '/feed/' | url | absoluteUrl(meta.url) }}{% endset %}
+	<title>{{ siteMeta.siteName }}</title>
+	<subtitle>{{ siteMeta.siteDescription }}</subtitle>
+	{% set absoluteUrl %}{{ '/feed/' | url | absoluteUrl(siteMeta.url) }}{% endset %}
 	<link href="{{ absoluteUrl }}" rel="self"/>
-	<link href="{{ meta.url }}"/>
+	<link href="{{ siteMeta.url }}"/>
 	<updated>{{ collections.snippets | rssLastUpdatedDate }}</updated>
-	<id>{{ meta.url }}/</id>
+	<id>{{ siteMeta.url }}/</id>
 	<author>
-		<name>{{ meta.authorName }}</name>
+		<name>{{ siteMeta.authorName }}</name>
 	</author>
 	{%- for item in collections.snippets | reverse %}
-	{% set absolutePostUrl %}{{ '/' | url | absoluteUrl(meta.url) }}#{{item.fileSlug}}{% endset %}
+	{% set absolutePostUrl %}{{ '/' | url | absoluteUrl(siteMeta.url) }}#{{item.fileSlug}}{% endset %}
 	<entry>
 		<title>{{ item.data.title  }}</title>
 		<link href="{{ absolutePostUrl}}"/>

@@ -1,7 +1,8 @@
 ---
-title: "Smol List Markers"
-categories: ["utility"]
-order: 12
+meta:
+  title: "Smol List Markers"
+  categories: ["utility"]
+  order: 12
 date: 2021-02-27
 templateEngineOverride: njk, md
 ---
@@ -76,7 +77,7 @@ If you need more style control, you may still want to use an alternate method. R
 {% endset %}
 
 {% set codepenForm %}
-{% postToCodepen title, page.fileSlug, categories, css, html, 'grid' %}
+{% postToCodepen meta.title, page.fileSlug, meta.categories, css, html, 'grid' %}
 {% endset %}
 
 {% include "code.njk" %}

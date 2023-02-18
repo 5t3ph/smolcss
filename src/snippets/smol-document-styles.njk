@@ -1,7 +1,8 @@
 ---
-title: "Smol Document Styles"
-categories: ["layout"]
-order: 13
+meta:
+  title: "Smol Document Styles"
+  categories: ["layout"]
+  order: 13
 date: 2021-02-28
 templateEngineOverride: njk, md
 ---
@@ -105,7 +106,7 @@ a {
 {% endset %}
 
 {% set codepenForm %}
-{% postToCodepen title, page.fileSlug, categories, css, html, 'unstyled' %}
+{% postToCodepen meta.title, page.fileSlug, meta.categories, css, html, 'unstyled' %}
 {% endset %}
 
 {% include "code.njk" %}

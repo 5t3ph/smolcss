@@ -1,7 +1,8 @@
 ---
-title: "Smol Responsive Padding"
-categories: ["layout"]
-order: 5
+meta:
+  title: "Smol Responsive Padding"
+  categories: ["layout"]
+  order: 5
 date: 2021-02-11
 templateEngineOverride: njk, md
 ---
@@ -35,7 +36,7 @@ Explore [more techniques for contextual, intrinsic spacing](https://moderncss.de
 {% endset %}
 
 {% set codepenForm %}
-{% postToCodepen title, page.fileSlug, categories, css, html %}
+{% postToCodepen meta.title, page.fileSlug, meta.categories, css, html %}
 {% endset %}
 
 {% include "code.njk" %}

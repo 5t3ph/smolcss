@@ -1,7 +1,8 @@
 ---
-title: "Smol Responsive CSS Grid"
-categories: ["grid", "layout"]
-order: 1
+meta:
+  title: "Smol Responsive CSS Grid"
+  categories: ["grid", "layout"]
+  order: 1
 date: 2021-02-10
 templateEngineOverride: njk, md
 ---
@@ -40,7 +41,7 @@ Learn more about [creating a responsive CSS grid solution](https://moderncss.dev
 {% endset %}
 
 {% set codepenForm %}
-{% postToCodepen title, page.fileSlug, categories, css, html %}
+{% postToCodepen meta.title, page.fileSlug, meta.categories, css, html %}
 {% endset %}
 
 {% include "code.njk" %}

@@ -1,0 +1,14 @@
+{
+  "title": {
+    "type": "string",
+    "required": true
+  },
+  "categories": {
+    "type": "array",
+    "required": true
+  },
+  "order": {
+    "type": "number",
+    "required": true
+  }
+}

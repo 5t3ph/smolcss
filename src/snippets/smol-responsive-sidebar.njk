@@ -1,7 +1,8 @@
 ---
-title: "Smol Responsive Sidebar Layout"
-categories: ["grid", "layout"]
-order: 4
+meta:
+  title: "Smol Responsive Sidebar Layout"
+  categories: ["grid", "layout"]
+  order: 4
 date: 2021-02-11
 templateEngineOverride: njk, md
 ---
@@ -31,7 +32,7 @@ Next, we use `minmax` for the main content. Why? Because if we only use `1fr` th
 {% endset %}
 
 {% set codepenForm %}
-{% postToCodepen title, page.fileSlug, categories, css, html %}
+{% postToCodepen meta.title, page.fileSlug, meta.categories, css, html %}
 {% endset %}
 
 {% include "code.njk" %}
