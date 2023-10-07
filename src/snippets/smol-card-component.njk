@@ -2,7 +2,6 @@
 meta:
   title: "Smol Composable Card Component"
   categories: ["grid", "flexbox", "component"]
-  order: 6
 date: 2021-02-14
 templateEngineOverride: njk, md
 ---
@@ -13,7 +12,9 @@ This component features `aspect-ratio` and leans heavily on the pseudo selectors
 
 With [CSS Selectors Level 4](https://drafts.csswg.org/selectors-4/#negation), the enhanced version of `:not()` now allows a selector list. This ability is fairly [well supported in modern browsers](https://caniuse.com/css-not-sel-list).
 
-**Note**: `aspect-ratio` is available in the latest versions of modern browsers, but you may need to create fallbacks for your unique audience and consider this solution as a progressive enhancement. Review the [Smol Aspect Ratio Gallery](#smol-aspect-ratio-gallery) for one method of creating a fallback.
+A tiny modern CSS progressive enhancement is the use of `text-wrap: pretty` which prevents typography "orphans" by evaluating the last four lines in a text block and makes adustments so the last line has two or more words.
+
+**Note**: ou may need to create fallbacks for `aspect-ratio` for your unique audience and consider this solution as a progressive enhancement. Review the [Smol Aspect Ratio Gallery](#smol-aspect-ratio-gallery) for one method of creating a fallback.
 
 > This solution also uses the [Smol Responsive CSS Grid](#smol-css-grid) to contain the cards.
 
@@ -27,7 +28,7 @@ With [CSS Selectors Level 4](https://drafts.csswg.org/selectors-4/#negation), th
   flex-direction: column;
   /* Supported for flexbox in modern browsers since April 2021 */
   gap: 1rem;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 0.5rem hsl(0 0% 0% / 35%);
   border-radius: 0.5rem;
 }
 
@@ -49,6 +50,9 @@ With [CSS Selectors Level 4](https://drafts.csswg.org/selectors-4/#negation), th
 .smol-card-component > :not(img) {
   margin-left: 1rem;
   margin-right: 1rem;
+
+  /* Prevent typography "orphans" */
+  text-wrap: pretty;
 }
 
 .smol-card-component > :not(img):first-child {

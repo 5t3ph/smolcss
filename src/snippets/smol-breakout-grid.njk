@@ -1,0 +1,75 @@
+---
+meta:
+  title: "Smol Breakout Grid"
+  categories: ["grid", "layout"]
+date: 2023-10-06
+templateEngineOverride: njk, md
+---
+
+{% set description %}
+
+Setup a flexible grid layout with collapsing outer columns for easy placement of "breakout" elements.
+
+The first feature is the use of the `[x-start]`/`[x-end]` syntax to create named grid areas that span more than one column (also works for rows!). In this example, we create three columns where the `grid` area spans all three, and the `content` area is the center column.
+
+Next, we've set the outer column widths to `1fr` and those columns will collapse first to give the `minmax()` definition for the center column priority, meaning they will eventually compute to a width of `0`. Important to note is that we're only setting _row_ gap, otherwise any column gap would keep space propped open between the middle and outer columns. The `minmax()` definition is explained in the demo for the [Smol Responsive Grid](#smol-css-grid).
+
+Finally, we assign everything that doesn't have the special `.breakout` class to the `content` named area, and the `.breakout` to the `grid` named area. Be sure to resize the demo to see the outer columns collapse to contain the breakout!
+
+{% endset %}
+
+{% set css %}
+.smol-breakout-grid {
+  --max-content-width: 50ch;
+  --breakout-difference: 0.2;
+
+  /*  Compute total allowed grid width to `--breakout-difference` 
+      larger than content area  */
+  --breakout-grid-width: calc(
+      var(--max-content-width) +
+      (var(--max-content-width) * var(--breakout-difference))
+    );
+
+  display: grid;
+  grid-template-columns:
+    [grid-start] 1fr 
+    [content-start] minmax(
+      min(100%, var(--max-content-width)),
+      1fr
+    )
+    [content-end] 1fr 
+    [grid-end];
+  width: min(100% - 2rem, var(--breakout-grid-width));
+  row-gap: 1rem;
+  margin: 5vb auto;
+}
+
+.smol-breakout-grid > *:not(.breakout) {
+  grid-column: content;
+}
+
+.smol-breakout-grid > .breakout {
+  grid-column: grid;
+}
+{% endset %}
+
+{% set html %}
+<div class="smol-breakout-grid">
+  <h2 data-unstyled>"Breakout" elements using CSS Grid</h2>
+  <p data-unstyled>Gummi bears gummies cheesecake donut liquorice sweet roll lollipop chocolate cake macaroon. Dragée powder biscuit.</p>
+  <p data-text class="breakout">I'm a breakout element, when my parent's parent is wide enough to let me expand into the outer columns.</p>
+  <p data-unstyled>Jelly sweet tiramisu fruitcake dessert muffin chocolate cake dragée. Donut dragée carrot cake.</p>
+</div>
+{% endset %}
+
+{% set resourceLink %}
+
+
+
+{% endset %}
+
+{% set codepenForm %}
+{% postToCodepen meta.title, page.fileSlug, meta.categories, css, html %}
+{% endset %}
+
+{% include "code.njk" %}

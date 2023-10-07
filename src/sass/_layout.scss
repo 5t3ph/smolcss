@@ -29,7 +29,7 @@ aside {
 header {
   color: var(--color-on-purple);
   background-color: var(--color-purple);
-  min-height: 30vh;
+  min-height: 30vb;
   display: grid;
   place-content: center;
   text-align: center;
@@ -43,14 +43,14 @@ header {
 main {
   display: grid;
   grid-gap: 5rem;
-  grid-gap: max(15vh, 5rem);
+  grid-gap: max(15vb, 5rem);
 }
 
 main,
 aside {
   max-width: 60rem;
   max-width: 100ch;
-  margin: 8vh auto;
+  margin: 8vb auto;
 }
 
 body > footer {
@@ -239,8 +239,8 @@ nav {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    width: min(35ch, 90vw);
-    max-height: calc(100vh - 4em);
+    width: min(35ch, 90vi);
+    max-height: calc(100vb - 4em);
     overflow-y: auto;
     background: var(--color-surface);
     box-shadow: 0.15em 0.15em 0.3em -0.1em rgba(black, 0.45);

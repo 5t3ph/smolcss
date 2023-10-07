@@ -3,7 +3,7 @@
   border: 1px solid var(--color-on-purple);
 
   @media (max-width: 928px) {
-    max-width: calc(100vw - 2rem);
+    max-width: calc(100vi - 2rem);
   }
 
   > ul {
@@ -26,7 +26,7 @@
     padding: 1rem;
     background-color: var(--color-purple);
     color: var(--color-on-purple);
-    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(1.5rem, 4vi, 2rem);
     font-weight: bold;
     text-align: center;
     border-radius: 0.15em;
@@ -108,5 +108,13 @@
     font: inherit;
     padding: 0.25em 0.5em;
     cursor: pointer;
+  }
+}
+
+.demo .smol-breakout-grid {
+  --max-content-width: min(50ch, 50vi);
+
+  @media (width < 80ch) {
+    --breakout-difference: 0.4;
   }
 }

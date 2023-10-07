@@ -10,6 +10,8 @@ const {
 
 const collectionSchemas = require("@11tyrocks/eleventy-plugin-collection-schemas");
 
+const order = require("./src/_data/order");
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget("./src/sass/");
   eleventyConfig.addPassthroughCopy("./src/*.png");
@@ -24,7 +26,7 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addCollection("orderedSnippets", function (collection) {
     return collection.getFilteredByTag("snippets").sort((a, b) => {
-      return a.data.order - b.data.order;
+      return order.indexOf(a.fileSlug) - order.indexOf(b.fileSlug);
     });
   });
 

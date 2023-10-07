@@ -6,9 +6,5 @@
   "categories": {
     "type": "array",
     "required": true
-  },
-  "order": {
-    "type": "number",
-    "required": true
   }
 }

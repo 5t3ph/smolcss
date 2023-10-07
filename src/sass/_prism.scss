@@ -25,7 +25,7 @@ pre[class*="language-"] {
   padding: 1em;
   margin: 0;
   overflow: auto;
-  max-width: calc(100vw - 2rem);
+  max-width: calc(100vi - 2rem);
 }
 
 :not(pre) > code[class*="language-"],
