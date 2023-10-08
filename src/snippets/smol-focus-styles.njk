@@ -12,7 +12,7 @@ templateEngineOverride: njk, md
 
 Focus styles are incredibly important for the accessibility of your application. But, it can be difficult to manage them across changing contexts.
 
-The following solution takes advantage of custom properites and `:is()` to set reasonable defaults for interactive elements. Then, individual instances can override each setting by simply providing an alternate value for the custom property.
+The following solution takes advantage of custom properties and `:is()` to set reasonable defaults for interactive elements. Then, individual instances can override each setting by simply providing an alternate value for the custom property.
 
 This solution sets `currentColor` as the `outline-color` which works in many contexts. One that it might not is for buttons, in which case you could update `--outline-color` to use the same color as the button background, for example.
 

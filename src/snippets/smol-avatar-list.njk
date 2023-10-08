@@ -11,7 +11,7 @@ templateEngineOverride: njk, md
 
 {% set description %}
 
-This smol component, which you may also know as a [facepile](https://indieweb.org/facepile), is possible due to the ability of CSS grid to easily create overlapping content. Paired with CSS custom properties and `calc()` we can make this a contextually resizeable component.
+This smol component, which you may also know as a [facepile](https://indieweb.org/facepile), is possible due to the ability of CSS grid to easily create overlapping content. Paired with CSS custom properties and `calc()` we can make this a contextually resizable component.
 
 Based on devices capabilities, the grid columns are adjusted to slightly narrower than the `--avatar-size`. Since nothing inherent to CSS grid stops the content overflowing, it forces an overlap based on DOM order of the list items. To ensure perfect circle images, we first use the `--avatar-size` value to explicitly set the list item dimensions. Then by setting both width and height to `100%` on the `img` in addition to `object-fit: cover` and `border-radius: 50%`, we can be assured that regardless of actual image dimensions the contents will be forced into a circle appearance.
 

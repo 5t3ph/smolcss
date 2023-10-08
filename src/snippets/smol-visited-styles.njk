@@ -12,7 +12,7 @@ templateEngineOverride: njk, md
 
 The `:visited` pseudo class is very unique because of [the potential to be exploited in terms of user's privacy](https://developer.mozilla.org/en-US/docs/Web/CSS/Privacy_and_the_:visited_selector). To resolve this, browser makers have limited which CSS styles are allowed to be applied using `:visited`.
 
-A key gotcha is that styles applied via `:visited` will always use the parent's alpha channel - meaning, you cannot use `rgba` to go from invisible to visible, you must change the whole color value. So, to hide the initial state, you need to be able to use a solid color, such as the page or elements's background color.
+A key gotcha is that styles applied via `:visited` will always use the parent's alpha channel - meaning, you cannot use `rgba` to go from invisible to visible, you must change the whole color value. So, to hide the initial state, you need to be able to use a solid color, such as the page or element's background color.
 
 As usual - this demo has bonus techniques and properties! Note the way we're updating the _order_ of the visited indicator using flexbox. And, we're using some newly supported properties to change the color, position, and style of the link underline. 
 
